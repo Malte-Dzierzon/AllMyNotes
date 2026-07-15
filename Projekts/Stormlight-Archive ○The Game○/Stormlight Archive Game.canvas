@@ -1,0 +1,28 @@
+{
+	"nodes":[
+		{"id":"d0fcbc149dd6df51","type":"text","text":"Shattered Plains","x":-271,"y":-618,"width":184,"height":60},
+		{"id":"787a33661564f021","type":"text","text":"- Zerklüftete Ebene auf Roshar mit Plateaus und tiefen Schluchten​\n    \n- Entstand durch einen göttlichen Kampf zwischen Honor und Odium​\n    \n- Zentrum des Kriegs zwischen Alethi und Parshendi​\n    \n- Beheimatet Chasmfiends und extremen Highstorms ausgesetzt​","x":-4,"y":-730,"width":649,"height":370},
+		{"id":"f8466c31d44049b7","type":"file","file":"Wiki/Images/Pictures/1024px-Shattered_Plains_WoR_map.jpeg","x":-350,"y":-1200,"width":263,"height":400},
+		{"id":"5b9aa0c8e072d4f9","type":"file","file":"Wiki/Images/Pictures/The_Shattered_Plains_by_Nick_van_Kleef.jpg","x":-60,"y":-1138,"width":699,"height":338},
+		{"id":"ae65b88a7d0e4973","type":"file","file":"Wiki/Images/Pictures/b82ghqadjhh51-2796429240.jpg","x":36,"y":440,"width":784,"height":588},
+		{"id":"d13fb3cf2680103d","type":"file","file":"Wiki/Images/Pictures/3f2fjibe1e001-4219812575.jpg","x":860,"y":480,"width":879,"height":509},
+		{"id":"ea7857552a964cfb","type":"file","file":"Wiki/Images/Pictures/762059ed9c1c04d72f39074ae78cedd5.png","x":-900,"y":-1131,"width":500,"height":331},
+		{"id":"c4dbf406a98b655b","type":"file","file":"Wiki/Images/Pictures/Alethi_warcamps.png","x":-900,"y":-755,"width":505,"height":335},
+		{"id":"4d2ffca010f44a27","type":"text","text":"## Roshar","x":36,"y":118,"width":165,"height":72,"color":"1"},
+		{"id":"c1e8762ac0937047","type":"text","text":"Roshar ist der zweite Planet des Rosharan-Systems im Cosmere und der zentrale Schauplatz der „Stormlight Archive“-Reihe. Die Welt besteht aus einem gewaltigen Superkontinent voller uralter Stürme, magischer Spren und zweier Hauptvölker – Menschen und Singers (Parshendi) –, deren Geschichte von göttlichen Kräften, zyklischen Katastrophen und Licht-basierten Magiesystemen geprägt ist.","x":360,"y":-83,"width":631,"height":403}
+	],
+	"edges":[
+		{"id":"e95db1dab8a99571","fromNode":"d0fcbc149dd6df51","fromSide":"right","toNode":"787a33661564f021","toSide":"left"},
+		{"id":"0d44971315c0c59b","fromNode":"d0fcbc149dd6df51","fromSide":"top","toNode":"f8466c31d44049b7","toSide":"bottom"},
+		{"id":"a6ed2de8ed288bfd","fromNode":"d0fcbc149dd6df51","fromSide":"top","toNode":"5b9aa0c8e072d4f9","toSide":"bottom"},
+		{"id":"119bc0b5a6acbe7f","fromNode":"4d2ffca010f44a27","fromSide":"left","toNode":"ae65b88a7d0e4973","toSide":"left"},
+		{"id":"a6bb81d4e123abc6","fromNode":"ae65b88a7d0e4973","fromSide":"right","toNode":"d13fb3cf2680103d","toSide":"left"},
+		{"id":"232a5c368d6548cd","fromNode":"4d2ffca010f44a27","fromSide":"right","toNode":"c1e8762ac0937047","toSide":"left"},
+		{"id":"d8f1fa822d6ace7c","fromNode":"d0fcbc149dd6df51","fromSide":"left","toNode":"c4dbf406a98b655b","toSide":"right"},
+		{"id":"0defe04b5d6531c9","fromNode":"d0fcbc149dd6df51","fromSide":"top","toNode":"ea7857552a964cfb","toSide":"right"}
+	],
+	"metadata":{
+		"version":"1.0-1.0",
+		"frontmatter":{}
+	}
+}
