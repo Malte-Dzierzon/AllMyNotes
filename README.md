@@ -1,0 +1,2 @@
+# AllMyNotes
+Obsidian Vault
