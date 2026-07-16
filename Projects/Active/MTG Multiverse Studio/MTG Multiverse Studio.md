@@ -31,4 +31,4 @@ tags: [game-dev, mtg, tauri, rust]
 
 ## Notizen
 - Repository: [[https://github.com/Malte-Dzierzon/MTG-Multiverse-Studio]]
-- Siehe auch: [[Wiki/MTG Lore/Links and Websites.md]]
+- Siehe auch: [[Links and Websites]]
