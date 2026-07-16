@@ -322,6 +322,19 @@ The `github:` field in project frontmatter links notes to their remote repos.
 
 ## 18. Growth Suggestions (next steps for you)
 
+### Hermes Skills für diesen Vault
+
+Wenn du in diesem Chat arbeitest und eine Frage zu einem bestimmten Bereich hast, 
+lade automatisch den passenden Skill. Diese Skills sind verfügbar:
+
+| Skill | Wann laden | Enthält |
+|-------|-----------|---------|
+| `vault-research` | Research-Aufgaben, Recherche-Automation, _Inbox-Handling | Templates, Cron-Design, Naming, Curation-Flow |
+| `vault-projects` | Projekte anlegen/aktualisieren/archivieren, Dashboard | Frontmatter, Scripts, Status-Taxonomie, GitHub-Mirror |
+| `vault-wiki` | Wiki-Einträge erstellen, Second-Brain-Konventionen | Kategorien, Verlinkung, Books-Immutable-Regel |
+
+Lade den Skill einfach mit `skill_view(name="vault-<bereich>")` bevor du eine Aufgabe startest.
+
 ### Wiki – "Second Brain" ausbauen
 
 | Kategorie | Inhalt | Priorität |
