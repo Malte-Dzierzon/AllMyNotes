@@ -1,3 +1,13 @@
+---
+title: Bow Shooter
+type: project
+status: idea
+engine: Unreal Engine 5
+started: 2026-07
+tags: [game-dev, unreal-engine, multiplayer]
+---
+
+# Bow Shooter
 
 - Online-Competitive-Game im Stil von CS2.
 - Statt moderner Waffen: Bögen als Hauptwaffe.
@@ -13,6 +23,4 @@
 - Minimalistisches, übersichtliches Interface.
 - Prototyp zuerst mit Kernmechanik, Bewegung und Treffer-System.
 
-Erst einmal Ue5
-
-
+Erst einmal UE5.
