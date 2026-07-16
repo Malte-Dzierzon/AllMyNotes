@@ -29,4 +29,4 @@ tags: [web-dev, portfolio, typescript]
 `███░░░░░░░░░` 30% – v0.3
 
 ## Notizen
-- Repository: [[https://github.com/Malte-Dzierzon/Portfolio]]
+- Repository: https://github.com/Malte-Dzierzon/Portfolio

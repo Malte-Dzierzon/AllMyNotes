@@ -30,5 +30,5 @@ tags: [game-dev, mtg, tauri, rust]
 `██░░░░░░░░░░` 20% – 0.1.2
 
 ## Notizen
-- Repository: [[https://github.com/Malte-Dzierzon/MTG-Multiverse-Studio]]
+- Repository: https://github.com/Malte-Dzierzon/MTG-Multiverse-Studio
 - Siehe auch: [[Links and Websites]]

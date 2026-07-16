@@ -6,7 +6,11 @@ engine: Minecraft Fabric 1.21.11
 started: 2026-05
 completed: 2026-06
 progress: 100%
-tags: [minecraft, modding, fabric, game-dev]
+tags:
+  - minecraft
+  - modding
+  - fabric
+  - game-dev
 ---
 
 # Minecraft Modpack Paleon — Fabric 1.21.11
