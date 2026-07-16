@@ -1,0 +1,26 @@
+views:
+  - type: cards
+    name: Active Projects
+    filters:
+      and:
+        - file.folder == "Projects/Active"
+        - file.ext == "md"
+    order:
+      - status
+      - title
+  - type: cards
+    name: Archive
+    filters:
+      and:
+        - file.folder == "Projects/Archive"
+        - file.ext == "md"
+    order:
+      - status
+      - title
+  - type: list
+    name: All Projects
+    filters:
+      and:
+        - file.inFolder("Projects")
+        - file.ext == "md"
+        - file.name != "Projects"
