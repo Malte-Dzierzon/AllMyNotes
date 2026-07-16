@@ -5,7 +5,6 @@
 ├── Wiki/                    # Second Brain (Mensch + KI lesbar)
 │   ├── _index.md            # Übersichtsseite
 │   ├── Books/               # Plugin-importierte Bücher (Google Books API)
-│   ├── MTG Lore/            # Magic: The Gathering Links & Notizen
 │   └── Images/Pictures/     # Referenzbilder, Maps, Concept Art
 │
 ├── Projects/                # Projekt-Dashboard

@@ -21,10 +21,8 @@
 │   │   ├── Book Collection/     # 12 .md mit YAML (18 Felder) – Plugin-generiert
 │   │   ├── BookCover/           # 12 .jpg – 1:1 Pairing mit Book Collection
 │   │   └── Books Overview.base  # Dataview cards + list
-│   ├── Images/
-│   │   └── Pictures/            # Referenzbilder, Maps, Concept Art (20+)
-│   └── MTG Lore/
-│       └── Links and Websites.md
+│   └── Images/
+│       └── Pictures/            # Referenzbilder, Maps, Concept Art (20+)
 │
 ├── Projects/                    # NEU – Projekt-Dashboard (ersetzt Projekts/)
 │   ├── 00-Overview/
@@ -51,7 +49,8 @@
 │   │   ├── Game-Design/         # _index.md + Detail-Notes
 │   │   ├── UE5-Tech/
 │   │   ├── Linux-Tools/
-│   │   └── Web-Dev/
+│   │   ├── Web-Dev/
+│   │   └── MTG Lore/            # Magic: The Gathering Links & Notizen
 │   ├── Sources/                 # PDFs, Web-Archives, Bilder
 │   │   ├── PDFs/
 │   │   └── Web-Exports/
@@ -76,7 +75,7 @@
 | **Archived Project** | `Projects/Archive/<Name>/<Name>.md` | Optional YAML + completion info | Free-form + Status ✅ |
 | **Canvas Map** | `Projects/*/*.canvas` | JSON canvas format | Visual node/edge maps |
 | **Excalidraw** | `Excalidraw/*.excalidraw.md` | YAML: `excalidraw-plugin: parsed`, `tags: [excalidraw]` | Compressed JSON + `%%` |
-| **Reference List** | `Wiki/MTG Lore/*.md` | None | Plain link list |
+| **Reference List** | `Wiki/MTG Lore/*.md` → wurde verschoben nach `Research/Topics/MTG Lore/` | Plain link list |
 | **Dataview .base** | `**/*.base` | YAML: views, filters, image config | Zero body |
 | **Root README** | `README.md` | None | HTML-centered GIF + motto + skills table |
 | **Research (Inbox)** | `Research/_Inbox/*.md` | YAML: title, type, source, agent, date, tags | Summary, Key Findings, Sources, Raw Notes |
