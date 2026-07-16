@@ -275,7 +275,7 @@ All scripts live in `_Meta/Scripts/` and are executable.
 
 ---
 
-## 14. Dynamic Discovery Rules (for agents)
+## 15. Dynamic Discovery Rules (for agents)
 
 When exploring this vault, **detect** rather than assume:
 
@@ -294,7 +294,7 @@ When exploring this vault, **detect** rather than assume:
 
 ---
 
-## 15. GitHub Mirror (Projects → Repos)
+## 16. GitHub Mirror (Projects → Repos)
 
 The vault is a **GitHub repository** (`Malte-Dzierzon/AllMyNotes`).  
 All 5 public repos are documented in `Projects/`:
@@ -311,12 +311,65 @@ The `github:` field in project frontmatter links notes to their remote repos.
 
 ---
 
-## 16. Evolution Notes
+## 17. Evolution Notes
 
 - **2026-07-16**: Initial extraction. Vault migrated from `Projekts/` to `Projects/Active|Archive`.
 - **2026-07-16**: `Research/` and `_Meta/` added. All 5 GitHub repos documented.
+- **2026-07-16**: Fixes: All notes now have frontmatter. 3 templates. 3 scripts. Wiki/_index.md. Removed MTG Lore from Research/ (it was a migration artifact). Removed duplicate Projects/Templates/ folder.
 - Next expected: Dataview dashboards, Research cron jobs, Wiki topic expansion.
 - When patterns shift, update this file — it is the contract between you and the vault.
+
+---
+
+## 18. Growth Suggestions (next steps for you)
+
+### Wiki – "Second Brain" ausbauen
+
+| Kategorie | Inhalt | Priorität |
+|-----------|--------|-----------|
+| `Game-Design/` | Combat-Systeme, Level-Design-Referenzen, Movement-Mechaniken | 🔥 Hoch |
+| `UE5-Tech/` | Nanite, Lumen, Niagara, Blueprint-Tutorials | 🔥 Hoch |
+| `Linux/` | Arch-Workflow, Hyprland-Configs, Disk-Tools | ⭐ Mittel |
+| `Programming/` | Python, Rust, TypeScript – Code-Referenzen | ⭐ Mittel |
+| `Creative/` | Worldbuilding, Charakter-Design, Art-Inspiration | 🌱 Niedrig |
+
+**Mach dir keinen Druck.** Ein Eintrag pro Woche reicht, um das Wiki organisch wachsen zu lassen.
+
+### Projects – "Dashboard" aktuell halten
+
+- **Projekt abschließen?** → Move nach `Archive/`, `status: archived`, `completed: 2026-XX-XX`
+- **Neue Idee?** → Nutze das Script: `python3 _Meta/Scripts/init-new-project.py "Name"`
+- **Neues GitHub-Repo?** → Kurze Note in `Projects/` + `github:` Feld + `00-Overview/Projects.md` ergänzen
+
+### Research – "Automation" einrichten
+
+1. **Cron-Job bauen**: `hermes cron create --schedule "0 9 * * 1" --script _Meta/Scripts/research-cron-orchestrator.py --prompt "Check _Requests.md and research all open topics" --deliver all`
+2. **Oder spontan**: `python3 _Meta/Scripts/research-cron-orchestrator.py run "UE5 Nanite Performance"` → erzeugt `Research/_Inbox/2026-07-16_ue5-nanite-performance.md`
+3. **Kuratieren**: Verschiebe aus `_Inbox/` → `Topics/<Kategorie>/` und ergänze `_index.md`
+
+### Excalidraw – Status quo
+
+Einfach zeichnen. Plugin legt automatisch `.excalidraw.md` in `Excalidraw/` an.
+Falls du Excalidraw woanders speichern willst, konfiguriere das Plugin – nicht manuell verschieben.
+
+### Templates – bei Bedarf anpassen
+
+- `_Meta/Templates/Project-Template.md` – Wenn dir Sektionen fehlen/überflüssig sind
+- `_Meta/Templates/Research-Template.md` – Wenn der Agent anders schreiben soll
+- `_Meta/Templates/Wiki-Template.md` – Wenn Wiki-Notes anders aussehen sollen
+
+### Scripts – nutzen oder erweitern
+
+- `vault-stats.py` → Zeigt offene Todos, Wortanzahl, Dateien pro Ordner
+- `init-new-project.py` → Legt neue Projekte an (nutzt Template)
+- `research-cron-orchestrator.py` → Startet Research-Aufträge
+
+### Nächste größere Baustelle
+
+**Dataview-Dashboards ausbauen:**
+- Automatische Status-Übersicht in `00-Overview/Projects.md`
+- Research-Übersicht (welche Topics haben wie viele Notes?)
+- Wiki-Kategorie-Index mit "letzte Änderung"-Spalte
 
 ---
 
