@@ -1,3 +1,13 @@
+---
+title: Dreamwolds
+type: project
+status: active
+engine: Unreal Engine 5
+started: 2026-07
+progress: 5%
+tags: [game-dev, unreal-engine, platformer]
+---
+
 **Dreamworlds** ist ein düster-traumhafter 3D-Plattformer in UE5 mit prozedural generierten Welten. Die Welt besteht aus großen, vertikal aufgebauten Biomen, die an Minecraft erinnern, aber atmosphärisch stark an _Little Nightmares_ und ein dunkles Phantasialand angelehnt sind. Spieler erkunden surreal gestaltete Traumräume, springen über komplexe Plattformen und kämpfen sich durch klare, minimalistische Kämpfe im Stil von _Hollow Knight_.
 
 In der Open World tauchen zufällige **Minibosse** auf, während ein übergeordneter **Endboss** als finales Ziel dient. Das Movement orientiert sich an _It Takes Two_: dynamisch, agil und präzise – kombiniert mit sauberem, gut lesbarem Combat. Die Atmosphäre bleibt dabei stets dunkel, traumartig und visuell reduziert, mit klaren VFX und ohne Überladung.

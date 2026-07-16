@@ -1,3 +1,13 @@
+---
+title: Rynthar
+type: project
+status: idea
+engine: Unreal Engine 5
+started: 2026-07
+progress: 5%
+tags: [game-dev, unreal-engine, mtg, strategy]
+---
+
 **Rynthar** verbindet Clash Royale-Action mit Magic: The Gathering-Strategie in zwei Modi: Echtzeit ohne Länder (Elixir-nachwachsend, Drag-Deploy in 2 Lanes, auto-Marsch zu 3 Türmen) und Turn-Based mit MTG-Vollintegration (Mana-Farben/Länder, Power/Toughness/Keywords, phasenbasierte Combat auf 3D-Schlachtfeld mit Truppenplatzierung). Spieler zerstören den Königsturm durch taktische Blocker/Instants in gotisch-epischem Artstyle – schnell zugänglich oder tief strategisch.
 
 #### Spielmodi in Rynthar

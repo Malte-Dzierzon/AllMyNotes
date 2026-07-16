@@ -226,12 +226,30 @@ tags: []
 
 | Template | Path | Used For |
 |----------|------|----------|
-| Project Template | `_Meta/Templates/Project-Template.md` | New active projects |
-| Research Template | `_Meta/Templates/Research-Template.md` | Agent-generated research notes |
+| Project Template | `_Meta/Templates/Project-Template.md` | New projects (full: Concept, Tech Stack, Roadmap, Links) |
+| Research Template | `_Meta/Templates/Research-Template.md` | Agent-generated research (TL;DR, Findings, Sources, Next Steps) |
+| Wiki Template | `_Meta/Templates/Wiki-Template.md` | New Wiki Second-Brain entries (structured for humans + AI) |
+
+### Template Variables
+- `{{title}}` – Project/Note name
+- `{{date}}` – Current date
+- `{{...}}` – Agent fills these
 
 ---
 
-## 12. Language & Style
+## 12. Scripts (_Meta/Scripts/)
+
+| Script | Purpose | Usage |
+|--------|---------|-------|
+| `init-new-project.py` | Scaffolds a new project folder + note from template | `python3 _Meta/Scripts/init-new-project.py "Name" --engine UE5 --status idea` |
+| `research-cron-orchestrator.py` | Creates research tasks and manages _Requests.md | `python3 _Meta/Scripts/research-cron-orchestrator.py run "topic"` |
+| `vault-stats.py` | Prints vault statistics (files, words, todos per folder) | `python3 _Meta/Scripts/vault-stats.py` |
+
+All scripts live in `_Meta/Scripts/` and are executable.
+
+---
+
+## 13. Language & Style
 
 - **Primary**: German (book metadata, project prose, research summaries)
 - **Technical terms**: English (canvas, JSON, API, Rust, UE5, TypeScript, …)
@@ -241,7 +259,7 @@ tags: []
 
 ---
 
-## 13. Conventions to Preserve
+## 14. Conventions to Preserve
 
 | Convention | Do | Don't |
 |------------|----|-------|
