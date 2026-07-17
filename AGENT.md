@@ -57,6 +57,7 @@
 │   └── Research.md              # Übersicht + Flow-Beschreibung
 │
 └── _Toolkit/                    # Vault-Werkzeuge (Scripts + Templates)
+    ├── toolkit.py                # Launcher – zentrale Einstiegsdatei
     ├── new-project/
     │   ├── new-project.py        # Neues Projekt anlegen
     │   └── README.md
@@ -65,6 +66,9 @@
     │   └── README.md
     ├── research/
     │   ├── research.py           # Research-Aufgaben
+    │   └── README.md
+    ├── archive-project/
+    │   ├── archive-project.py    # Projekte archivieren
     │   └── README.md
     └── Templates/
         ├── Project-Template.md
@@ -247,9 +251,11 @@ tags: []
 
 | Script | Purpose | Usage |
 |--------|---------|-------|
+| `toolkit` | Launcher – zentrale Einstiegsdatei für alle Tools | `toolkit` (Menü) / `toolkit <tool> [args]` |
 | `new-project` | Scaffolds a new project folder + note from template | `new-project "Name" --engine UE5 --status idea` |
 | `research` | Creates research tasks and manages _Requests.md | `research run "topic"` |
 | `vault-stats` | Prints vault statistics (files, words, todos per folder) | `vault-stats` |
+| `archive-project` | Move project Active → Archive + set status | `archive-project "Name"` |
 
 All scripts live in `_Toolkit/<script>/<script>.py` and have global wrappers in `~/.local/bin/`.
 
@@ -379,9 +385,11 @@ Falls du Excalidraw woanders speichern willst, konfiguriere das Plugin – nicht
 
 ### Scripts – nutzen oder erweitern
 
+- `toolkit` → Launcher: `toolkit` zeigt Menü, `toolkit list` zeigt alle Tools
 - `vault-stats` → Zeigt offene Todos, Wortanzahl, Dateien pro Bereich (auch `--json` und `--watch`)
 - `new-project` → Legt neue Projekte an (nutzt Template; interaktiv oder via CLI)
-- `research` → Startet Research-Aufträge (neu: interaktives Menü)
+- `research` → Startet Research-Aufträge (interaktives Menü)
+- `archive-project` → Archiviert Projekte (Active → Archive, YAML-Update)
 
 ### Nächste größere Baustelle
 
