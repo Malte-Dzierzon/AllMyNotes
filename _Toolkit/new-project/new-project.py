@@ -21,7 +21,7 @@ from datetime import date
 from pathlib import Path
 
 VAULT_ROOT = Path(__file__).resolve().parent.parent.parent
-TEMPLATE_PATH = VAULT_ROOT / "_Meta" / "Templates" / "Project-Template.md"
+TEMPLATE_PATH = VAULT_ROOT / "_Toolkit" / "Templates" / "Project-Template.md"
 PROJECTS_ACTIVE = VAULT_ROOT / "Projects" / "Active"
 PROJECTS_ARCHIVE = VAULT_ROOT / "Projects" / "Archive"
 
