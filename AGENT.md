@@ -240,7 +240,7 @@ tags: []
 
 | Script | Purpose | Usage |
 |--------|---------|-------|
-| `init-new-project.py` | Scaffolds a new project folder + note from template | `python3 _Meta/Scripts/init-new-project.py "Name" --engine UE5 --status idea` |
+| `new-project.py` | Scaffolds a new project folder + note from template | `python3 _Meta/Scripts/new-project.py "Name" --engine UE5 --status idea` |
 | `research-cron-orchestrator.py` | Creates research tasks and manages _Requests.md | `python3 _Meta/Scripts/research-cron-orchestrator.py run "topic"` |
 | `vault-stats.py` | Prints vault statistics (files, words, todos per folder) | `python3 _Meta/Scripts/vault-stats.py` |
 
@@ -350,7 +350,7 @@ Lade den Skill einfach mit `skill_view(name="vault-<bereich>")` bevor du eine Au
 ### Projects – "Dashboard" aktuell halten
 
 - **Projekt abschließen?** → Move nach `Archive/`, `status: archived`, `completed: 2026-XX-XX`
-- **Neue Idee?** → Nutze das Script: `python3 _Meta/Scripts/init-new-project.py "Name"`
+- **Neue Idee?** → Nutze das Script: `python3 _Meta/Scripts/new-project.py "Name"`
 - **Neues GitHub-Repo?** → Kurze Note in `Projects/` + `github:` Feld + `00-Overview/Projects.md` ergänzen
 
 ### Research – "Automation" einrichten
@@ -373,7 +373,7 @@ Falls du Excalidraw woanders speichern willst, konfiguriere das Plugin – nicht
 ### Scripts – nutzen oder erweitern
 
 - `vault-stats.py` → Zeigt offene Todos, Wortanzahl, Dateien pro Ordner
-- `init-new-project.py` → Legt neue Projekte an (nutzt Template)
+- `new-project.py` → Legt neue Projekte an (nutzt Template; interaktiv oder via CLI)
 - `research-cron-orchestrator.py` → Startet Research-Aufträge
 
 ### Nächste größere Baustelle
