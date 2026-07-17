@@ -1,17 +1,11 @@
 #!/usr/bin/env python3
 """
-new-project.py – Erstellt ein neues Projekt im Vault aus der Project-Template.md.
+new-project.py  --  Neues Projekt im Vault anlegen
 
-Ohne Argumente startet das Skript im interaktiven Modus und fragt alle
-Werte ab. Mit Argumenten geht's automatisch:
-
-    python3 _Toolkit/new-project/new-project.py "Mein Spiel" --engine Godot --status active
-    python3 _Toolkit/new-project/new-project.py "Noise Web" --engine "React + Three.js" --tags "web, art"
-    python3 _Toolkit/new-project/new-project.py                           # interaktiv
-
-Erzeugt:
-    Projects/Active/<Project>/
-    Projects/Active/<Project>/<Project>.md (befüllt mit Template)
+Usage:
+    new-project                                # interaktiv
+    new-project "Mein Spiel" --engine Godot    # via CLI
+    new-project "Noise Web" --engine "React"   # Web-Projekt
 """
 
 import sys
@@ -19,6 +13,9 @@ import argparse
 import re
 from datetime import date
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from _shared.ui import header, section, ok, fail, tip, keyval, spacer, hr, prompt, list_items
 
 VAULT_ROOT = Path(__file__).resolve().parent.parent.parent
 TEMPLATE_PATH = VAULT_ROOT / "_Toolkit" / "Templates" / "Project-Template.md"
@@ -31,22 +28,22 @@ type: project
 status: active      # active | idea | archived
 engine: Unreal Engine 5  # Rust, Python, TypeScript, Blender, Godot, …
 started: {{date}}
-progress: 0%        # Schätzung: 0–100%
+progress: 0%        # Schaetzung: 0-100%
 github:             # optional: https://github.com/Malte-Dzierzon/<repo>
 tags: []
 ---
 
 # {{title}}
 
-**Kurzbeschreibung:**  
-Ein Satz, worum es geht – für Menschen und KI gleichermaßen verständlich.
+**Kurzbeschreibung:**
+Ein Satz, worum es geht - fuer Menschen und KI gleichermassen verstaendlich.
 
 ---
 
 ## Concept
 
-Warum dieses Projekt? Was ist die Kernidee?  
-(Free-Form, gerne Brain-Dump – Stil wie bei [[Projects/Active/Dreamwolds/Dreamwolds.md|Dreamwolds]] oder [[Projects/Active/Rynthar/Rynthar-Conzept.md|Rynthar]].)
+Warum dieses Projekt? Was ist die Kernidee?
+(Free-Form, gerne Brain-Dump)
 
 ---
 
@@ -54,9 +51,9 @@ Warum dieses Projekt? Was ist die Kernidee?
 
 | Komponente | Technologie |
 |------------|-------------|
-| Engine     | UE5 / Rust / Python / … |
-| Sprache    | C++, Blueprint, TypeScript, … |
-| Plattform  | Windows, Linux, Web, … |
+| Engine     | UE5 / Rust / Python / ... |
+| Sprache    | C++, Blueprint, TypeScript, ... |
+| Plattform  | Windows, Linux, Web, ... |
 
 ---
 
@@ -89,12 +86,11 @@ Warum dieses Projekt? Was ist die Kernidee?
 
 ## Notes
 
-(Alle Gedanken, Probleme, Learnings – wird organisch größer.)
+(Alle Gedanken, Probleme, Learnings - wird organisch groesser.)
 """
 
 
 def sanitize_name(name: str) -> str:
-    """Entfernt zeichen, die in Datei-/Ordnernamen problematisch sind."""
     name = name.strip()
     name = name.replace("/", "-").replace("\\", "-")
     name = re.sub(r'[<>:"|?*]', "", name)
@@ -102,183 +98,117 @@ def sanitize_name(name: str) -> str:
 
 
 def replace_field(content: str, field: str, value: str) -> str:
-    """
-    Ersetzt ein YAML-Frontmatter-Feld und erhält den Inline-Kommentar.
-
-    Aus 'status: active      # active | idea | archived'
-    wird  'status: idea       # active | idea | archived'
-    """
     pattern = rf'^{re.escape(field)}:.*$'
     match = re.search(pattern, content, re.MULTILINE)
     if not match:
         return content
-
     original_line = match.group(0)
     comment_match = re.search(r'(#.*)$', original_line)
-
     if comment_match:
         replacement = f'{field}: {value}  {comment_match.group(1)}'
     else:
         replacement = f'{field}: {value}'
-
     return re.sub(pattern, replacement, content, count=1, flags=re.MULTILINE)
 
 
-def prompt(text: str, default: str = "") -> str:
-    """Fragt den Benutzer mit optionalem Default-Wert."""
-    if default:
-        result = input(f"{text} [{default}]: ").strip()
-        return result if result else default
-    return input(f"{text}: ").strip()
-
-
 def interactive_mode() -> argparse.Namespace:
-    """Sammelt alle Werte interaktiv ein."""
-    print()
-    print("  📦  Neues Projekt anlegen")
-    print("  " + "─" * 36)
-
-    name = prompt("  Projektname")
+    header("New Project  -  Interactive")
+    name = prompt("Project name")
     if not name:
-        print("  ❌ Projektname wird benötigt.")
+        fail("Project name required.")
         sys.exit(1)
-
-    engine = prompt("  Engine / Tech-Stack", "Unreal Engine 5")
-    status = prompt("  Status", "idea")
+    engine = prompt("Engine / Tech stack", "Unreal Engine 5")
+    status = prompt("Status", "idea")
     if status not in ("active", "idea", "archived"):
-        print(f"  ⚠️  Ungültiger Status '{status}', setze auf 'idea'")
+        fail(f"Invalid status '{status}', using 'idea'")
         status = "idea"
-
-    desc = prompt("  Kurzbeschreibung")
-    tags = prompt("  Tags (kommagetrennt)")
-    github = prompt("  GitHub-Repo-Name")
-    progress = prompt("  Fortschritt in %", "0")
-
-    return argparse.Namespace(
-        name=name,
-        engine=engine,
-        status=status,
-        desc=desc,
-        tags=tags,
-        github=github,
-        progress=progress,
-    )
+    desc = prompt("Short description")
+    tags = prompt("Tags (comma-separated)")
+    github = prompt("GitHub repo name (optional)")
+    progress = prompt("Progress in %", "0")
+    return argparse.Namespace(name=name, engine=engine, status=status,
+                              desc=desc, tags=tags, github=github, progress=progress)
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description="📦 Erstellt ein neues Projekt im Vault aus der Project-Template.md",
+        description="Create a new project in the vault from Project-Template.md",
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
-Beispiele:
-  python3 _Toolkit/new-project/new-project.py "Mein Spiel" --engine Godot --status active
-  python3 _Toolkit/new-project/new-project.py "Noise Web" --engine "React" --tags "web, art"
-  python3 _Toolkit/new-project/new-project.py                           # interaktiv
-
-Ohne Argumente startet das Skript im interaktiven Modus.
-        """,
     )
-    parser.add_argument("name", nargs="?", default=None,
-                        help="Projektname (z. B. 'Mein Cooles Spiel')")
-    parser.add_argument("--engine", "-e", default="Unreal Engine 5",
-                        help="Engine oder Tech-Stack (z. B. Godot, React, Python)")
-    parser.add_argument("--status", "-s", default="idea",
-                        choices=["active", "idea", "archived"],
-                        help="Projekt-Status")
-    parser.add_argument("--desc", "-d", default="",
-                        help="Kurzbeschreibung (1 Satz)")
-    parser.add_argument("--tags", "-t", default="",
-                        help="Tags, kommagetrennt (z. B. 'game, 3d, fantasy')")
-    parser.add_argument("--github", "-g", default="",
-                        help="GitHub-Repo-Name (z. B. 'my-cool-game')")
+    parser.add_argument("name", nargs="?", default=None, help="Project name")
+    parser.add_argument("--engine", "-e", default="Unreal Engine 5", help="Engine or tech stack")
+    parser.add_argument("--status", "-s", default="idea", choices=["active", "idea", "archived"], help="Project status")
+    parser.add_argument("--desc", "-d", default="", help="Short description (1 sentence)")
+    parser.add_argument("--tags", "-t", default="", help="Tags, comma-separated (e.g. 'game, 3d')")
+    parser.add_argument("--github", "-g", default="", help="GitHub repo name")
     parser.add_argument("--progress", "-p", default="0",
-                        help="Fortschritt in Prozent (z. B. 10)")
-
+                        help="Progress in percent (e.g. 10)")
     args = parser.parse_args()
-
-    # ── Interaktiv wenn kein Name übergeben ──
     if args.name is None:
         args = interactive_mode()
 
-    # ── Projektnamen bereinigen ──
     folder_name = sanitize_name(args.name)
     if not folder_name:
-        print("❌ Projektname ist ungültig (leer oder nur Sonderzeichen).")
+        fail("Invalid project name (empty or only special characters).")
         sys.exit(1)
 
-    # ── Zielpfad bestimmen ──
-    if args.status == "archived":
-        target = PROJECTS_ARCHIVE / folder_name
-    else:
-        target = PROJECTS_ACTIVE / folder_name
-
+    target = PROJECTS_ARCHIVE / folder_name if args.status == "archived" else PROJECTS_ACTIVE / folder_name
     if target.exists():
-        print(f"❌ Projekt existiert bereits: {target}")
+        fail(f"Project already exists: {target}")
         sys.exit(1)
 
-    # ── Template laden ──
+    # Template laden
     if TEMPLATE_PATH.exists():
-        template_text = TEMPLATE_PATH.read_text(encoding="utf-8")
+        content = TEMPLATE_PATH.read_text(encoding="utf-8")
     else:
-        print(f"⚠️  Template nicht gefunden unter:")
-        print(f"   {TEMPLATE_PATH}")
-        print(f"   → Verwende eingebautes Fallback-Template.")
-        template_text = FALLBACK_TEMPLATE
+        fail(f"Template not found: {TEMPLATE_PATH}")
+        tip("Using built-in fallback template.")
+        content = FALLBACK_TEMPLATE
 
-    # ── Template befüllen ──
-    content = template_text
-
+    # Ersetzungen
     content = content.replace("{{title}}", folder_name)
     content = content.replace("{{date}}", str(date.today()))
-
     content = replace_field(content, "status", args.status)
     content = replace_field(content, "engine", args.engine)
     content = replace_field(content, "progress", f"{args.progress}%")
 
-    # GitHub-URL setzen (Feld + Link-Tabelle)
+    github_url = None
     if args.github:
         github_url = f"https://github.com/Malte-Dzierzon/{args.github}"
         content = replace_field(content, "github", args.github)
-        content = content.replace(
-            "https://github.com/Malte-Dzierzon/<repo>",
-            github_url,
-        )
+        content = content.replace("https://github.com/Malte-Dzierzon/<repo>", github_url)
 
-    # Tags setzen
     if args.tags:
         tags_list = [t.strip() for t in args.tags.split(",") if t.strip()]
         if tags_list:
-            tags_yaml = f"[{', '.join(tags_list)}]"
-            content = replace_field(content, "tags", tags_yaml)
+            content = replace_field(content, "tags", f"[{', '.join(tags_list)}]")
 
-    # Kurzbeschreibung
     if args.desc:
         content = content.replace(
-            "Ein Satz, worum es geht – für Menschen und KI gleichermaßen verständlich.",
+            "Ein Satz, worum es geht - fuer Menschen und KI gleichermassen verstaendlich.",
             args.desc,
         )
 
-    # ── Ordner + Datei schreiben ──
+    # Schreiben
     target.mkdir(parents=True)
     note_path = target / f"{folder_name}.md"
     note_path.write_text(content, encoding="utf-8")
 
-    # ── Ausgabe ──
-    print()
-    print(f"  ✅  Projekt erstellt")
-    print(f"  " + "─" * 36)
-    print(f"  📂  {target}")
-    print(f"  📄  {note_path.name}")
-    print(f"  🏷️   Status: {args.status}")
-    print(f"  ⚙️   Engine: {args.engine}")
+    # Ausgabe
+    header("New Project  -  Created")
+    keyval("Folder", str(target))
+    keyval("File", note_path.name)
+    hr()
+    keyval("Status", args.status)
+    keyval("Engine", args.engine)
     if args.tags:
-        print(f"  🏷️   Tags:   {', '.join(tags_list)}")
-    if args.github:
-        print(f"  🌐  GitHub: {github_url}")
+        keyval("Tags", ", ".join(tags_list))
+    if github_url:
+        keyval("GitHub", github_url)
     if args.desc:
-        print(f"  📝  Beschr.: {args.desc}")
-    print()
-    print(f"  💡  Nächster Schritt: Concept & Features ausfüllen!")
+        keyval("Description", args.desc)
+    spacer()
+    tip("Next: fill in Concept & Features in the new note.")
 
 
 if __name__ == "__main__":

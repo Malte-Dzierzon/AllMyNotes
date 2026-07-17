@@ -11,17 +11,14 @@ Usage:
     toolkit <tool>                   # Tool direkt starten (interaktiv)
     toolkit <tool> --help            # Hilfe zu einem Tool
     toolkit <tool> <arg1> <arg2>     # Tool mit Argumenten starten
-
-Beispiele:
-    toolkit                          # → Menü öffnen
-    toolkit new-project "Mein Spiel" # → Projekt anlegen
-    toolkit vault-stats --json       # → Statistik als JSON
-    toolkit archive-project "Bow Shooter"  # → Projekt archivieren
 """
 
 import sys
 import subprocess
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+from _shared.ui import header, list_items, ok, fail, prompt, spacer
 
 TOOLKIT_DIR = Path(__file__).parent
 
@@ -32,7 +29,7 @@ TOOLS = {
     },
     "vault-stats": {
         "path": "vault-stats/vault-stats.py",
-        "desc": "Vault-Statistiken (Dateien, Todos, Wörter)",
+        "desc": "Vault-Statistiken (Dateien, Todos, Woerter)",
     },
     "research": {
         "path": "research/research.py",
@@ -40,30 +37,23 @@ TOOLS = {
     },
     "archive-project": {
         "path": "archive-project/archive-project.py",
-        "desc": "Projekt archivieren (Active → Archive)",
+        "desc": "Projekt archivieren (Active in Archive)",
     },
 }
 
 ORDER = ["new-project", "vault-stats", "research", "archive-project"]
 
 
-def print_header(title: str):
-    """Einheitlicher Header für bessere Lesbarkeit."""
-    print()
-    print(f"  {title}")
-    print("  " + "─" * 44)
-
-
-def run_tool(name: str, args: list = None):
+def run_tool(name: str, args: list = None) -> None:
     """Startet ein Tool-Skript als Subprozess."""
     if name not in TOOLS:
-        print(f"❌  Unbekanntes Tool: '{name}'")
-        print(f"   Verfügbare Tools: {', '.join(TOOLS.keys())}")
+        fail(f"Unbekanntes Tool: '{name}'")
+        print(f"   Verfuegbar: {', '.join(TOOLS.keys())}")
         sys.exit(1)
 
     script = TOOLKIT_DIR / TOOLS[name]["path"]
     if not script.exists():
-        print(f"❌  Skript nicht gefunden: {script}")
+        fail(f"Skript nicht gefunden: {script}")
         sys.exit(1)
 
     cmd = [sys.executable, str(script)]
@@ -73,82 +63,69 @@ def run_tool(name: str, args: list = None):
     sys.exit(subprocess.run(cmd).returncode)
 
 
-def show_menu():
-    """Interaktives Menü anzeigen und Tool auswählen."""
-    print_header("🧰  _Toolkit – Vault-Werkzeuge")
+def show_menu() -> None:
+    """Interaktives Menue anzeigen."""
+    header("_Toolkit  -  Vault Automation Suite")
 
-    for i, name in enumerate(ORDER, 1):
-        tool = TOOLS[name]
-        print(f"  {i})  {name:<18}  {tool['desc']}")
-    print(f"  l)  list                 Alle Tools anzeigen")
-    print(f"  q)  quit                 Beenden")
-    print()
+    items = [f"{name:<18}  {t['desc']}" for name, t in TOOLS.items()]
+    list_items(items, numbered=True)
 
-    try:
-        choice = input("  Auswahl: ").strip().lower()
-    except (EOFError, KeyboardInterrupt):
-        print("\n  👋  Tschüss!")
+    spacer()
+    print(f"  l)  list        Alle Tools anzeigen")
+    print(f"  q)  quit        Beenden")
+    spacer()
+
+    choice = prompt("Auswahl").lower()
+
+    if choice in ("q", "", "quit"):
+        print("  Tschuess!")
         return
-
-    if choice == "q" or choice == "":
-        print("  👋  Tschüss!")
+    if choice in ("l", "list"):
+        show_list()
         return
-    if choice == "l":
-        print_tools()
-        return
-
-    # Zahl → Tool-Name
     if choice.isdigit():
         idx = int(choice) - 1
         if 0 <= idx < len(ORDER):
             run_tool(ORDER[idx])
-        else:
-            print(f"  ❌  Ungültige Auswahl: {choice}")
+            return
+        fail(f"Ungueltige Auswahl: {choice}")
         return
-
-    # Name → Tool
     if choice in TOOLS:
         run_tool(choice)
         return
 
-    print(f"  ❌  Ungültige Auswahl: '{choice}'")
-    print(f"     Verfügbar: 1–{len(ORDER)}, l(list), q(quit) oder Name")
+    fail(f"Ungueltige Auswahl: '{choice}'")
+    show_menu()
 
 
-def print_tools():
-    """Listet alle Tools auf (für KI-Agenten und Menschen)."""
-    print_header("🧰  _Toolkit – Verfügbare Tools")
-    print()
+def show_list() -> None:
+    """Listet alle Tools auf (fuer KI-Agenten und Menschen)."""
+    header("_Toolkit  -  Available Tools")
     for name in ORDER:
-        tool = TOOLS[name]
-        print(f"  {name:<20}  {tool['desc']}")
-    print()
-    print("  Usage:  toolkit <tool> [args]")
-    print("  Z.B.:   toolkit new-project --help")
-    print("  Menü:   toolkit (ohne Argumente)")
-    print()
+        t = TOOLS[name]
+        print(f"  {name:<20}  {t['desc']}")
+    spacer()
+    print(f"  Usage:  toolkit <tool> [args]")
+    print(f"  e.g.:   toolkit new-project --help")
+    spacer()
 
 
 def main():
     if len(sys.argv) > 1:
         cmd = sys.argv[1]
-        if cmd == "list" or cmd == "--list":
-            print_tools()
+        if cmd in ("list", "--list"):
+            show_list()
             return
         if cmd in TOOLS:
-            # toolname [args...]
             run_tool(cmd, sys.argv[2:] if len(sys.argv) > 2 else None)
             return
         if cmd in ("-h", "--help"):
-            # Haupt-Hilfe
             print(__doc__.strip())
             return
-        print(f"❌  Unbekanntes Kommando: '{cmd}'")
-        print(f"   Usage: toolkit [list | toolname | --help]")
-        print(f"   Tools: {', '.join(TOOLS.keys())}")
+        fail(f"Unbekanntes Kommando: '{cmd}'")
+        print(f"   Usage: toolkit [list | <tool> [args] | --help]")
         sys.exit(1)
 
-    # Keine Argumente → interaktives Menü
     show_menu()
 
 
