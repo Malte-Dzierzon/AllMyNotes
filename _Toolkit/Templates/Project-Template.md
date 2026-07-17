@@ -1,11 +1,12 @@
 ---
 title: "{{title}}"
 type: project
-status: active      # active | idea | archived
-engine: Unreal Engine 5  # Rust, Python, TypeScript, Blender, Godot, …
-started: {{date}}
-progress: 0%        # Schätzung: 0–100%
-github:             # optional: https://github.com/Malte-Dzierzon/<repo>
+status: active
+engine: Rust, Tauri
+started:
+  "{ date }":
+progress: 0%
+github:
 tags: []
 ---
 
