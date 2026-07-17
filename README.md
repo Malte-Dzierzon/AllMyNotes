@@ -32,7 +32,7 @@ AllMyNotes/
 ├── Projects/      Active & archived project folders
 ├── Research/      Automated research inbox + topics
 ├── Excalidraw/    Excalidraw drawings (plugin-managed)
-├── _Meta/         Templates, scripts, vault infrastructure
+├── _Toolkit/        Templates, scripts, vault infrastructure
 └── README.md      This file
 ```
 

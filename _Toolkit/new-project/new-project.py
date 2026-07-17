@@ -5,9 +5,9 @@ new-project.py – Erstellt ein neues Projekt im Vault aus der Project-Template.
 Ohne Argumente startet das Skript im interaktiven Modus und fragt alle
 Werte ab. Mit Argumenten geht's automatisch:
 
-    python3 _Meta/Scripts/new-project.py "Mein Spiel" --engine Godot --status active
-    python3 _Meta/Scripts/new-project.py "Noise Web" --engine "React + Three.js" --tags "web, art"
-    python3 _Meta/Scripts/new-project.py                           # interaktiv
+    python3 _Toolkit/new-project/new-project.py "Mein Spiel" --engine Godot --status active
+    python3 _Toolkit/new-project/new-project.py "Noise Web" --engine "React + Three.js" --tags "web, art"
+    python3 _Toolkit/new-project/new-project.py                           # interaktiv
 
 Erzeugt:
     Projects/Active/<Project>/
@@ -171,9 +171,9 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Beispiele:
-  python3 _Meta/Scripts/new-project.py "Mein Spiel" --engine Godot --status active
-  python3 _Meta/Scripts/new-project.py "Noise Web" --engine "React" --tags "web, art"
-  python3 _Meta/Scripts/new-project.py                           # interaktiv
+  python3 _Toolkit/new-project/new-project.py "Mein Spiel" --engine Godot --status active
+  python3 _Toolkit/new-project/new-project.py "Noise Web" --engine "React" --tags "web, art"
+  python3 _Toolkit/new-project/new-project.py                           # interaktiv
 
 Ohne Argumente startet das Skript im interaktiven Modus.
         """,

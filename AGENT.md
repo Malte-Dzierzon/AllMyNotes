@@ -41,7 +41,7 @@
 │   │   ├── Minecraft Paleon/    # NEU – ✅ 100%
 │   │   ├── Stormlight-Archive The Game/ # .canvas – Referenz
 │   │   └── Minecraft Mod Ideas/ # .canvas – aus Unsortiert
-│   └── Templates/               # (nicht direkt genutzt, Referenz in _Meta/)
+│   └── Templates/               # (nicht direkt genutzt, Referenz in _Toolkit/)
 │
 ├── Research/                    # NEU – Automatisierte Recherche
 │   ├── _Inbox/                  # Agenten schreiben hier rein (write-only)
@@ -56,13 +56,20 @@
 │   │   └── Web-Exports/
 │   └── Research.md              # Übersicht + Flow-Beschreibung
 │
-└── _Meta/                       # NEU – Vault-Infrastruktur
-    ├── Templates/
-    │   ├── Project-Template.md
-    │   └── Research-Template.md
-    ├── Scripts/                 # (zukünftige Automationen)
-    └── Archive/                 # (ausgelagerte Notizen)
-```
+└── _Toolkit/                    # Vault-Werkzeuge (Scripts + Templates)
+    ├── new-project/
+    │   ├── new-project.py        # Neues Projekt anlegen
+    │   └── README.md
+    ├── vault-stats/
+    │   ├── vault-stats.py        # Vault-Statistiken
+    │   └── README.md
+    ├── research/
+    │   ├── research.py           # Research-Aufgaben
+    │   └── README.md
+    └── Templates/
+        ├── Project-Template.md
+        ├── Research-Template.md
+        └── Wiki-Template.md
 
 ---
 
@@ -80,7 +87,7 @@
 | **Root README** | `README.md` | None | HTML-centered GIF + motto + skills table |
 | **Research (Inbox)** | `Research/_Inbox/*.md` | YAML: title, type, source, agent, date, tags | Summary, Key Findings, Sources, Raw Notes |
 | **Research (Topic)** | `Research/Topics/<Topic>/*.md` | Optional YAML | Overview, related projects, sub-topics |
-| **Template** | `_Meta/Templates/*.md` | Full YAML with instructions | Placeholder text for {{variables}} |
+| **Template** | `_Toolkit/Templates/*.md` | Full YAML with instructions | Placeholder text for {{variables}} |
 | **Dashboard** | `Projects/00-Overview/Projects.md` | YAML: title, type, updated | Tables, links, legend |
 
 ---
@@ -207,7 +214,7 @@ tags: []
 ## 10. Research Flow (for Agents)
 
 ### The automated research pipeline:
-1. **Write to** `Research/_Inbox/` using template `_Meta/Templates/Research-Template.md`
+1. **Write to** `Research/_Inbox/` using template `_Toolkit/Templates/Research-Template.md`
 2. **Filename format**: `YYYY-MM-DD_topic.md` (machine-sortable)
 3. **Required fields**: title, type: research, source, agent, date
 4. **Content**: Summary (EN + DE), Key Findings, Sources, Raw Notes
@@ -225,9 +232,9 @@ tags: []
 
 | Template | Path | Used For |
 |----------|------|----------|
-| Project Template | `_Meta/Templates/Project-Template.md` | New projects (full: Concept, Tech Stack, Roadmap, Links) |
-| Research Template | `_Meta/Templates/Research-Template.md` | Agent-generated research (TL;DR, Findings, Sources, Next Steps) |
-| Wiki Template | `_Meta/Templates/Wiki-Template.md` | New Wiki Second-Brain entries (structured for humans + AI) |
+| Project Template | `_Toolkit/Templates/Project-Template.md` | New projects (full: Concept, Tech Stack, Roadmap, Links) |
+| Research Template | `_Toolkit/Templates/Research-Template.md` | Agent-generated research (TL;DR, Findings, Sources, Next Steps) |
+| Wiki Template | `_Toolkit/Templates/Wiki-Template.md` | New Wiki Second-Brain entries (structured for humans + AI) |
 
 ### Template Variables
 - `{{title}}` – Project/Note name
@@ -236,15 +243,15 @@ tags: []
 
 ---
 
-## 12. Scripts (_Meta/Scripts/)
+## 12. Scripts (_Toolkit/)
 
 | Script | Purpose | Usage |
 |--------|---------|-------|
-| `new-project.py` | Scaffolds a new project folder + note from template | `python3 _Meta/Scripts/new-project.py "Name" --engine UE5 --status idea` |
-| `research-cron-orchestrator.py` | Creates research tasks and manages _Requests.md | `python3 _Meta/Scripts/research-cron-orchestrator.py run "topic"` |
-| `vault-stats.py` | Prints vault statistics (files, words, todos per folder) | `python3 _Meta/Scripts/vault-stats.py` |
+| `new-project` | Scaffolds a new project folder + note from template | `new-project "Name" --engine UE5 --status idea` |
+| `research` | Creates research tasks and manages _Requests.md | `research run "topic"` |
+| `vault-stats` | Prints vault statistics (files, words, todos per folder) | `vault-stats` |
 
-All scripts live in `_Meta/Scripts/` and are executable.
+All scripts live in `_Toolkit/<script>/<script>.py` and have global wrappers in `~/.local/bin/`.
 
 ---
 
@@ -286,7 +293,7 @@ When exploring this vault, **detect** rather than assume:
 6. **Dataview views** → `search_files(pattern="*.base", target="files")`
 7. **Research inbox** → `search_files(pattern="Research/_Inbox/*", target="files")`
 8. **Research topics** → `search_files(pattern="Research/Topics/*/_index.md", target="files")`
-9. **Templates** → `search_files(pattern="_Meta/Templates/*.md", target="files")`
+9. **Templates** → `search_files(pattern="_Toolkit/Templates/*.md", target="files")`
 10. **GitHub mirror** → Check YAML frontmatter `github:` field in project notes
 
 **Never hardcode paths** — folder names are user-defined and may change.
@@ -313,7 +320,7 @@ The `github:` field in project frontmatter links notes to their remote repos.
 ## 17. Evolution Notes
 
 - **2026-07-16**: Initial extraction. Vault migrated from `Projekts/` to `Projects/Active|Archive`.
-- **2026-07-16**: `Research/` and `_Meta/` added. All 5 GitHub repos documented.
+- **2026-07-16**: `Research/` and `_Toolkit/` added. All 5 GitHub repos documented.
 - **2026-07-16**: Fixes: All notes now have frontmatter. 3 templates. 3 scripts. Wiki/_index.md. Removed MTG Lore from Research/ (it was a migration artifact). Removed duplicate Projects/Templates/ folder.
 - Next expected: Dataview dashboards, Research cron jobs, Wiki topic expansion.
 - When patterns shift, update this file — it is the contract between you and the vault.
@@ -350,13 +357,13 @@ Lade den Skill einfach mit `skill_view(name="vault-<bereich>")` bevor du eine Au
 ### Projects – "Dashboard" aktuell halten
 
 - **Projekt abschließen?** → Move nach `Archive/`, `status: archived`, `completed: 2026-XX-XX`
-- **Neue Idee?** → Nutze das Script: `python3 _Meta/Scripts/new-project.py "Name"`
+- **Neue Idee?** → Nutze das Script: `new-project "Name"`
 - **Neues GitHub-Repo?** → Kurze Note in `Projects/` + `github:` Feld + `00-Overview/Projects.md` ergänzen
 
 ### Research – "Automation" einrichten
 
-1. **Cron-Job bauen**: `hermes cron create --schedule "0 9 * * 1" --script _Meta/Scripts/research-cron-orchestrator.py --prompt "Check _Requests.md and research all open topics" --deliver all`
-2. **Oder spontan**: `python3 _Meta/Scripts/research-cron-orchestrator.py run "UE5 Nanite Performance"` → erzeugt `Research/_Inbox/2026-07-16_ue5-nanite-performance.md`
+1. **Cron-Job bauen**: `hermes cron create --schedule "0 9 * * 1" --script _Toolkit/research/research.py --prompt "Check _Requests.md and research all open topics" --deliver all`
+2. **Oder spontan**: `research run "UE5 Nanite Performance"` → erzeugt `Research/_Inbox/2026-07-16_ue5-nanite-performance.md`
 3. **Kuratieren**: Verschiebe aus `_Inbox/` → `Topics/<Kategorie>/` und ergänze `_index.md`
 
 ### Excalidraw – Status quo
@@ -366,15 +373,15 @@ Falls du Excalidraw woanders speichern willst, konfiguriere das Plugin – nicht
 
 ### Templates – bei Bedarf anpassen
 
-- `_Meta/Templates/Project-Template.md` – Wenn dir Sektionen fehlen/überflüssig sind
-- `_Meta/Templates/Research-Template.md` – Wenn der Agent anders schreiben soll
-- `_Meta/Templates/Wiki-Template.md` – Wenn Wiki-Notes anders aussehen sollen
+- `_Toolkit/Templates/Project-Template.md` – Wenn dir Sektionen fehlen/überflüssig sind
+- `_Toolkit/Templates/Research-Template.md` – Wenn der Agent anders schreiben soll
+- `_Toolkit/Templates/Wiki-Template.md` – Wenn Wiki-Notes anders aussehen sollen
 
 ### Scripts – nutzen oder erweitern
 
-- `vault-stats.py` → Zeigt offene Todos, Wortanzahl, Dateien pro Ordner
-- `new-project.py` → Legt neue Projekte an (nutzt Template; interaktiv oder via CLI)
-- `research-cron-orchestrator.py` → Startet Research-Aufträge
+- `vault-stats` → Zeigt offene Todos, Wortanzahl, Dateien pro Bereich (auch `--json` und `--watch`)
+- `new-project` → Legt neue Projekte an (nutzt Template; interaktiv oder via CLI)
+- `research` → Startet Research-Aufträge (neu: interaktives Menü)
 
 ### Nächste größere Baustelle
 

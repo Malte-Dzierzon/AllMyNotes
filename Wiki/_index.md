@@ -51,7 +51,7 @@ Neue Wiki-Notes sollten:
 
 ## Templates für neue Wiki-Notes
 
-Nutze `_Meta/Templates/Wiki-Template.md` als Ausgangspunkt.
+Nutze `_Toolkit/Templates/Wiki-Template.md` als Ausgangspunkt.
 
 Oder kopiere dieses Minimalbeispiel:
 
