@@ -1,63 +1,51 @@
 ---
-// Footer — Minimal archival footer with metadata feel
+// Footer Component — Minimal archival footer with metadata feel
 
-interface FooterProps {
-  brandName?: string;
+interface Props {
   links?: Array<{ label: string; href: string }>;
+  social?: Array<{ label: string; href: string; icon: string }>;
   copyright?: string;
-  meta?: Array<{ label: string; value: string }>;
 }
 
 const {
-  brandName = 'NOISE WEB',
   links = [
     { label: 'WORK', href: '/work' },
     { label: 'ABOUT', href: '/about' },
     { label: 'CONTACT', href: '/contact' },
-    { label: 'ARCHIVE', href: '/archive' },
   ],
-  copyright = '© 2024 NOISE WEB. All rights reserved.',
-  meta = [
-    { label: 'BUILT WITH', value: 'ASTRO + TAILWIND' },
-    { label: 'FONTS', value: 'INTER, CRIMSON TEXT, JETBRAINS MONO' },
-    { label: 'DESIGN SYSTEM', value: 'NOISE WEB V2' },
-  ],
+  social = [],
+  copyright = 'NOISE WEB — Digital Ruins Archive',
 } = Astro.props;
 ---
 
 <footer class="footer" role="contentinfo">
-  <div class="footer-brand">
-    <a href="/" class="footer-brand-link" aria-label="Home">
-      {brandName}
-    </a>
-    <p class="footer-tagline">Digital ruins. Analog dreams.</p>
-  </div>
-
-  <nav class="footer-nav" aria-label="Footer navigation">
-    <ul class="footer-nav-list" role="list">
-      {links.map((link) => (
-        <li><a href={link.href} class="footer-nav-link">{link.label}</a></li>
-      ))}
-    </ul>
-  </nav>
-
-  <div class="footer-meta" role="contentinfo">
-    {meta.map((item) => (
-      <div class="footer-meta-item">
-        <span class="footer-meta-label">{item.label}</span>
-        <span class="footer-meta-value">{item.value}</span>
-      </div>
+  <div class="footer-grid">
+    {links.map((link) => (
+      <nav class="footer-section" aria-label={link.label}>
+        <p class="footer-label">{link.label}</p>
+        <a href={link.href} class="footer-content">{link.label}</a>
+      </nav>
     ))}
+
+    <div class="footer-section">
+      <p class="footer-label">CONNECT</p>
+      <div class="footer-social" role="list">
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-social-link" role="listitem" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="footer-social-link" role="listitem" aria-label="Twitter">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 4s-.7 2.1-2 3.4c4.2 1.6 8 8.4 8 8.4-3-3.64-9-4-12-4 3.7.8 7 3.4 7 3.4.9 3.3-.9 6.4-2.3 8.1-3.3-.6-6-3.4-6-6.4 0-1.1.3-2.3.9-3.3v-.1c.9-.3 1.8-.7 2.6-1.1-.3-.1-.5-.2-.8-.2s-.5.1-.8.2c-.8.4-1.7.8-2.6 1.1-.1 0-.2.1-.2.1l-.2.1c-.4.2-.7.5-.9.8-.2.3-.3.7-.3 1.1 0 .8.3 1.5.8 2.1C4 20.5 1.4 19 1 17.8c.5.6 1 .9 1.6 1.1-.6-.4-1-1-1-1.7 0-.4.1-.8.2-1.1.1-.3.3-.6.4-.9.3-.5.6-1 .9-1.5.2-.4.5-.8.7-1.2.1-.2.3-.4.4-.6.1-.1.2-.2.3-.3.1-.1.2-.2.3-.3.1-.1.2-.2.3-.3.1-.1.2-.2.3-.3.1-.1.2-.2.3-.3.1-.1.2-.2.3-.3.1-.1.2-.2.3-.3.1-.1.2-.2.3-.3.1-.1.2-.2.3-.3.1-.1.2-.2.3-.3.1-.1.2-.2.3-.3.1-.1.2-.2.3-.3.1-.1.2-.2.3-.3.1-.1.2-.2.3-.3.1-.1.2-.2.3-.3.1-.1.2-.2.3-.3"></path></svg>
+        </a>
+        <a href="mailto:hello@noisewb.example" class="footer-social-link" role="listitem" aria-label="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+        </a>
+      </div>
+    </div>
   </div>
 
-  <div class="footer-bottom">
-    <p class="footer-copyright">{copyright}</p>
-    <p class="footer-meta-code">
-      <span class="label" style="font-family: var(--font-mono); font-size: var(--text-xs);">Nº</span>
-      <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-ghost);">067</span>
-      <span style="margin: 0 var(--space-3);" class="label" style="font-family: var(--font-mono); font-size: var(--text-xs);">VER</span>
-      <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-ghost);">2.0.0</span>
-    </p>
+  <div class="footer-meta">
+    <p>{copyright}</p>
+    <p class="footer-build">BUILD <span class="label label-accent" style="font-family: var(--font-mono);">v1.0.0-noise</span></p>
   </div>
 </footer>
 
@@ -65,124 +53,95 @@ const {
   .footer {
     padding: var(--space-10) clamp(1.5rem, 4vw, 4rem);
     border-top: 1px solid rgba(255, 255, 255, 0.06);
+    background: var(--color-bg-deep);
+  }
+
+  .footer-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: var(--space-8);
+    margin-bottom: var(--space-8);
   }
 
-  .footer-brand {
-    grid-column: 1 / -1;
-    padding-bottom: var(--space-6);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  .footer-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
   }
 
-  .footer-brand-link {
-    font-family: var(--font-serif);
-    font-size: var(--text-xl);
-    font-weight: var(--weight-bold);
-    color: var(--color-text-primary);
-    text-decoration: none;
-    letter-spacing: -0.01em;
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
+  .footer-label {
+    font-family: var(--font-condensed);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--color-text-ghost);
     margin-bottom: var(--space-2);
   }
 
-  .footer-brand-link::before {
-    content: '';
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    background: var(--color-accent-cyan);
-    border-radius: 50%;
-  }
-
-  .footer-tagline {
-    font-family: var(--font-condensed);
+  .footer-content {
+    font-family: var(--font-sans);
     font-size: var(--text-sm);
     color: var(--color-text-muted);
-    text-transform: lowercase;
-    letter-spacing: var(--tracking-wide);
-  }
-
-  .footer-nav-list {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-  }
-
-  .footer-nav-link {
-    font-family: var(--font-condensed);
-    font-size: var(--text-xs);
-    font-weight: var(--weight-semibold);
-    letter-spacing: var(--tracking-widest);
-    text-transform: uppercase;
-    color: var(--color-text-muted);
+    line-height: var(--leading-normal);
     text-decoration: none;
     transition: color 0.3s ease;
   }
 
-  .footer-nav-link:hover {
+  .footer-content:hover {
     color: var(--color-accent-cyan);
   }
 
-  .footer-nav-link:focus-visible {
-    outline: none;
-    color: var(--color-accent-cyan);
+  .footer-social {
+    display: flex;
+    gap: var(--space-4);
+  }
+
+  .footer-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--color-text-muted);
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  @media (hover: hover) {
+    .footer-social-link:hover {
+      background: var(--color-accent-cyan);
+      color: var(--color-bg-deep);
+      transform: translateY(-2px);
+    }
   }
 
   .footer-meta {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: var(--space-4);
-    margin-top: var(--space-4);
-  }
-
-  .footer-meta-item {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-  }
-
-  .footer-meta-label {
-    font-family: var(--font-condensed);
-    font-size: var(--text-xs);
-    letter-spacing: var(--tracking-widest);
-    text-transform: uppercase;
-    color: var(--color-text-ghost);
-  }
-
-  .footer-meta-value {
     font-family: var(--font-mono);
     font-size: var(--text-xs);
-    color: var(--color-accent-cyan);
-  }
-
-  .footer-bottom {
-    grid-column: 1 / -1;
+    color: var(--color-text-ghost);
+    text-align: right;
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: var(--space-8);
-    margin-top: var(--space-6);
-    border-top: 1px solid rgba(255, 255, 255, 0.04);
     flex-wrap: wrap;
-    gap: var(--space-4);
+    gap: var(--space-3);
   }
 
-  .footer-copyright {
-    font-family: var(--font-sans);
-    font-size: var(--text-sm);
-    color: var(--color-text-ghost);
-  }
-
-  .footer-meta-code {
+  .footer-build {
     display: flex;
     align-items: center;
     gap: var(--space-2);
-    color: var(--color-text-ghost);
+  }
+
+  @media (max-width: 768px) {
+    .footer-meta {
+      flex-direction: column;
+      text-align: center;
+    }
   }
 </style>
