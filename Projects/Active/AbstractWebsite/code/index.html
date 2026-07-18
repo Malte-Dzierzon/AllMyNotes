@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a1628" />
+  <meta name="description" content="NOISE WEB — Digital Ruins. A quiet, melancholic, futuristic design exhibition." />
+  <title>NOISE WEB — Digital Ruins Exhibition</title>
+
+  <!-- Fonts: Self-hosted via Google Fonts (fallback, design system recommends @fontsource for production) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Crimson+Text:wght@400;600;700&family=Playfair+Display:wght@400;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Crimson+Text:wght@400;600;700&family=Playfair+Display:wght@400;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&display=swap" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Crimson+Text:wght@400;600;700&family=Playfair+Display:wght@400;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&display=swap" />
+  </noscript>
+
+  <style>
+    /* ==========================================================================
+       NOISE WEB — Design System V2 (Single-File Demo)
+       ========================================================================== */
+
+    /* --- Design Tokens --- */
+    :root {
+      /* Colors */
+      --color-bg-deep: #0a1628;
+      --color-bg-dark: #142a4a;
+      --color-bg-mid: #1e3a5f;
+      --color-bg-light: #2a4a72;
+      --color-bg-parchment: #1a2d4a;
+
+      --color-text-primary: #ffffff;
+      --color-text-secondary: #e0eaf5;
+      --color-text-muted: #8aa9c4;
+      --color-text-ghost: rgba(138, 169, 196, 0.5);
+
+      --color-accent-cyan: #a8f0e8;
+      --color-accent-cyan-dim: #6cc8c0;
+      --color-accent-blue: #7bb8e8;
+      --color-accent-blue-dim: #4a8ab0;
+      --color-accent-glitch-magenta: #d060c0;
+      --color-accent-glitch-cyan: #60d0d0;
+      --color-accent-warm: #c8b898;
+      --color-accent-warm-dim: #a89070;
+
+      /* Fonts */
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-serif: 'Crimson Text', 'Noto Serif', Georgia, 'Times New Roman', serif;
+      --font-serif-alt: 'Playfair Display', Georgia, serif;
+      --font-mono: 'JetBrains Mono', 'Space Mono', 'Fira Code', 'Courier New', monospace;
+      --font-condensed: 'Inter Tight', 'Inter', -apple-system, sans-serif;
+
+      /* Fluid Type Scale */
+      --text-3xl: clamp(2.5rem, 5.5vw, 5.5rem);
+      --text-2xl: clamp(2rem, 4vw, 3.5rem);
+      --text-xl: clamp(1.5rem, 3vw, 2.5rem);
+      --text-lg: clamp(1.125rem, 2vw, 1.5rem);
+      --text-base: clamp(0.875rem, 1.5vw, 1rem);
+      --text-sm: clamp(0.75rem, 1.25vw, 0.875rem);
+      --text-xs: clamp(0.625rem, 1vw, 0.75rem);
+
+      /* Weights */
+      --weight-light: 300;
+      --weight-regular: 400;
+      --weight-medium: 500;
+      --weight-semibold: 600;
+      --weight-bold: 700;
+      --weight-black: 800;
+
+      /* Leading */
+      --leading-tight: 0.9;
+      --leading-snug: 1.1;
+      --leading-normal: 1.4;
+      --leading-relaxed: 1.7;
+      --leading-mono: 1.6;
+
+      /* Tracking */
+      --tracking-tight: -0.02em;
+      --tracking-normal: 0em;
+      --tracking-wide: 0.05em;
+      --tracking-wider: 0.08em;
+      --tracking-widest: 0.12em;
+
+      /* Spacing */
+      --space-0: 0;
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.5rem;
+      --space-6: 2rem;
+      --space-8: 3rem;
+      --space-10: 4rem;
+      --space-12: 5rem;
+      --space-16: 8rem;
+      --space-20: 10rem;
+
+      --gap-sm: 0.5rem;
+      --gap-md: 1rem;
+      --gap-lg: 2rem;
+      --gap-xl: 4rem;
+
+      --split-60-40: 60% 40%;
+      --split-70-30: 70% 30%;
+      --split-data: 1fr 2fr;
+
+      /* Duration */
+      --duration-slow: 8s;
+      --duration-medium: 3s;
+      --duration-fast: 0.5s;
+
+      --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --ease-linear: linear;
+
+      /* Gradients */
+      --gradient-vignette: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(10, 22, 40, 0) 0%, rgba(10, 22, 40, 0.6) 100%);
+      --gradient-section: linear-gradient(180deg, var(--color-bg-dark) 0%, var(--color-bg-deep) 100%);
+    }
+
+    /* --- Reset & Base --- */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      font-size: var(--text-base);
+      font-weight: var(--weight-regular);
+      line-height: var(--leading-normal);
+      color: var(--color-text-secondary);
+      background-color: var(--color-bg-dark);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* --- Global Noise Overlay (MANDATORY) --- */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+      opacity: 0.08;
+      mix-blend-mode: overlay;
+      animation: noise-breathe var(--duration-slow) var(--ease-in-out) infinite;
+    }
+
+    @keyframes noise-breathe {
+      0%, 100% { opacity: 0.08; }
+      50% { opacity: 0.104; }
+    }
+
+    /* --- SVG Filters (inline for demo) --- */
+    .svg-filters {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+
+    /* --- Navigation --- */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: clamp(1rem, 2vw, 1.5rem) clamp(1.5rem, 4vw, 4rem);
+      background: rgba(10, 22, 40, 0.6);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .nav-brand {
+      font-family: var(--font-serif);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: var(--color-text-primary);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      letter-spacing: -0.01em;
+    }
+
+    .nav-brand::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--color-accent-cyan);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--space-6);
+      list-style: none;
+    }
+
+    .nav-link {
+      font-family: var(--font-condensed);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--color-accent-cyan);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover { color: var(--color-accent-cyan); }
+    .nav-link:hover::after { width: 100%; }
+
+    .nav-hamburger {
+      display: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--color-text-primary);
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 16px;
+      height: 2px;
+      background: var(--color-bg-deep);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      .nav-hamburger { display: flex; }
+      .nav-links { display: none; }
+    }
+
+    /* --- Section styling --- */
+    .section {
+      padding: var(--space-16) clamp(1.5rem, 4vw, 4rem);
+      position: relative;
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--gradient-section);
+      pointer-events: none;
+    }
+
+    .section:first-child::before { display: none; }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* --- Section Divider --- */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-4) 0;
+    }
+
+    .section-divider-left { justify-content: flex-start; }
+    .section-divider-center { justify-content: center; }
+    .section-divider-right { justify-content: flex-end; }
+
+    .section-divider-line {
+      flex: 1;
+      height: 1px;
+      max-width: 400px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+    }
+
+    .section-divider-label {
+      font-family: var(--font-condensed);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-text-ghost);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* --- Hero — Pattern A: Full-Screen Collage --- */
+    .hero-collage {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: var(--split-60-40);
+      align-items: center;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-collage::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-vignette);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-collage-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-collage-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.65) contrast(1.3) saturate(0.85);
+    }
+
+    .hero-collage-content {
+      position: relative;
+      z-index: 2;
+      padding: var(--space-10);
+    }
+
+    .hero-collage-content-left {
+      max-width: 600px;
+    }
+
+    .hero-badge {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .label {
+      font-family: var(--font-condensed);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      display: inline-block;
+    }
+
+    .label-accent { color: var(--color-accent-cyan); }
+
+    .hero-heading {
+      font-family: var(--font-serif);
+      font-weight: var(--weight-black);
+      font-size: var(--text-3xl);
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      text-transform: uppercase;
+      /* Chromatic aberration on heading */
+      text-shadow:
+        -2px 0 rgba(96, 208, 208, 0.3),
+        2px 0 rgba(208, 96, 192, 0.3);
+    }
+
+    .section-heading {
+      font-family: var(--font-sans);
+      font-weight: var(--weight-bold);
+      font-size: var(--text-2xl);
+      line-height: var(--leading-snug);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      text-transform: uppercase;
+    }
+
+    .poetic-text {
+      font-family: var(--font-serif-alt);
+      font-weight: var(--weight-light);
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      line-height: var(--leading-relaxed);
+      color: var(--color-text-secondary);
+      max-width: 45ch;
+    }
+
+    .poetic-text em {
+      font-style: italic;
+      color: var(--color-accent-cyan);
+    }
+
+    .body-text {
+      font-family: var(--font-sans);
+      font-weight: var(--weight-regular);
+      font-size: var(--text-base);
+      line-height: var(--leading-normal);
+      color: var(--color-text-muted);
+      max-width: 65ch;
+    }
+
+    /* --- Button --- */
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-family: var(--font-condensed);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      padding: 0.75rem 1.5rem;
+      background: transparent;
+      border: 2px solid var(--color-text-primary);
+      color: var(--color-text-primary);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .button:focus-visible {
+      outline: 2px solid var(--color-accent-cyan);
+      outline-offset: 2px;
+    }
+
+    .button-primary {
+      background: var(--color-accent-cyan);
+      border-color: var(--color-accent-cyan);
+      color: var(--color-bg-deep);
+    }
+
+    .button-primary:hover {
+      background: transparent;
+      color: var(--color-accent-cyan);
+      box-shadow: 4px 4px 0 var(--color-accent-cyan);
+      transform: translate(-2px, -2px);
+    }
+
+    .button-glitch {
+      border-color: rgba(208, 96, 192, 0.4);
+      color: var(--color-accent-glitch-magenta);
+      text-shadow: -0.5px 0 var(--color-accent-glitch-cyan), 0.5px 0 var(--color-accent-glitch-magenta);
+    }
+
+    .button-glitch:hover {
+      background: rgba(208, 96, 192, 0.1);
+      border-color: var(--color-accent-glitch-magenta);
+      box-shadow: 3px 0 0 rgba(96, 208, 208, 0.3), -3px 0 0 rgba(208, 96, 192, 0.3);
+      transform: translate(-2px, -2px);
+    }
+
+    /* --- Scroll Indicator --- */
+    .scroll-indicator {
+      position: absolute;
+      bottom: var(--space-8);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      z-index: 10;
+      opacity: 0.5;
+      animation: scroll-bounce 3s ease-in-out infinite;
+    }
+
+    @keyframes scroll-bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(180deg, var(--color-accent-cyan) 0%, transparent 100%);
+    }
+
+    .scroll-text {
+      font-family: var(--font-condensed);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-text-ghost);
+    }
+
+    /* --- Scanlines --- */
+    .scanlines {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(to bottom, transparent 0px, rgba(0,0,0,0.06) 1px, transparent 2px);
+      background-size: 100% 3px;
+      opacity: 0.5;
+      z-index: 3;
+    }
+
+    .scanlines-blue {
+      background: repeating-linear-gradient(to bottom, transparent 0px, rgba(96,208,208,0.04) 1px, transparent 2px);
+      background-size: 100% 3px;
+    }
+
+    /* --- Chromatic Overlay --- */
+    .chromatic-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .chromatic-overlay::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(96, 208, 208, 0.03);
+      transform: translateX(-2px);
+      mix-blend-mode: screen;
+    }
+
+    .chromatic-overlay::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(208, 96, 192, 0.03);
+      transform: translateX(2px);
+      mix-blend-mode: screen;
+    }
+
+    /* --- Pattern Nav Cards --- */
+    .pattern-nav {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--gap-md);
+    }
+
+    .pattern-nav-item {
+      display: flex;
+      gap: var(--space-4);
+      padding: var(--space-5);
+      background: var(--color-bg-mid);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      position: relative;
+    }
+
+    .pattern-nav-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    .pattern-nav-item:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.4);
+      border-color: var(--color-accent-cyan);
+    }
+
+    .pattern-nav-number {
+      font-family: var(--font-mono);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-accent-cyan);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .pattern-nav-title {
+      font-family: var(--font-serif);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-1);
+    }
+
+    .pattern-nav-desc {
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: var(--leading-normal);
+    }
+
+    /* --- Card --- */
+    .card {
+      position: relative;
+      background: var(--color-bg-mid);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      overflow: hidden;
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .card:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    .card-image {
+      position: relative;
+      height: 16rem;
+      overflow: hidden;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.75) contrast(1.15);
+      transition: filter 0.4s ease, transform 0.6s ease;
+    }
+
+    .card:hover .card-image img {
+      filter: brightness(0.85) contrast(1.2);
+      transform: scale(1.03);
+    }
+
+    .card-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(10, 22, 40, 0.4) 100%);
+    }
+
+    .card-content {
+      padding: var(--space-5);
+      position: relative;
+      z-index: 2;
+    }
+
+    .card-badge {
+      display: inline-block;
+      font-family: var(--font-condensed);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-accent-cyan);
+      margin-bottom: var(--space-2);
+    }
+
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-text-primary);
+      line-height: var(--leading-snug);
+      margin-bottom: var(--space-3);
+    }
+
+    .card-body {
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: var(--leading-normal);
+    }
+
+    .card-grid-stagger {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--gap-lg);
+    }
+
+    .card-stack:nth-child(odd) { margin-top: var(--space-6); }
+    .card-stack:nth-child(even) { margin-bottom: var(--space-6); }
+
+    /* --- Grid 60/40 --- */
+    .grid-60-40 {
+      display: grid;
+      grid-template-columns: var(--split-60-40);
+      gap: var(--gap-lg);
+      align-items: center;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-collage { grid-template-columns: 1fr; }
+      .grid-60-40 { grid-template-columns: 1fr; }
+      .hero-collage-content-right { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      .card-grid-stagger { grid-template-columns: 1fr; }
+      .card-stack:nth-child(odd),
+      .card-stack:nth-child(even) { margin: 0; }
+      .pattern-nav { grid-template-columns: 1fr; }
+    }
+
+    /* --- Texture Demo Grid --- */
+    .texture-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--gap-md);
+    }
+
+    .texture-demo {
+      background: var(--color-bg-mid);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+
+    .texture-demo-bg {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+
+    .texture-demo-info {
+      padding: var(--space-4);
+    }
+
+    /* --- Typography Demo Card --- */
+    .card-text-only {
+      padding: var(--space-6);
+    }
+
+    .type-specimen {
+      padding: var(--space-4);
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      margin-top: var(--space-4);
+    }
+
+    /* --- Fragmented Text --- */
+    .fragment-serif {
+      font-family: var(--font-serif);
+      font-weight: var(--weight-bold);
+      letter-spacing: -0.01em;
+      filter: url('#chromatic-aberration');
+    }
+
+    .fragment-slide {
+      display: inline-block;
+    }
+
+    .fragment-slide span:nth-child(odd) { transform: translateY(-4px); display: inline-block; }
+    .fragment-slide span:nth-child(even) { transform: translateY(4px); display: inline-block; }
+
+    .fragment-blur {
+      filter: blur(4px);
+      opacity: 0.7;
+      mix-blend-mode: screen;
+    }
+
+    /* --- Hero Diagonal (Pattern B) --- */
+    .hero-diagonal {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero-diagonal::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--color-bg-deep);
+      clip-path: polygon(0 0, 45% 0, 25% 100%, 0 100%);
+      z-index: 0;
+    }
+
+    .hero-diagonal::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--color-bg-mid);
+      clip-path: polygon(45% 0, 100% 0, 100% 100%, 25% 100%);
+      z-index: 0;
+    }
+
+    .hero-diagonal-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 45% 55%;
+      min-height: 100vh;
+      align-items: center;
+    }
+
+    .hero-diagonal-dark, .hero-diagonal-light {
+      padding: var(--space-10);
+    }
+
+    .hero-diagonal-light img {
+      width: 100%;
+      height: 70vh;
+      object-fit: cover;
+      filter: brightness(0.7) contrast(1.2);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-diagonal-content { grid-template-columns: 1fr; }
+      .hero-diagonal::before, .hero-diagonal::after {
+        clip-path: none;
+        background: var(--color-bg-dark);
+      }
+      .hero-diagonal::after { display: none; }
+    }
+
+    /* --- Hero Typographic (Pattern D) --- */
+    .hero-typographic {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: var(--color-bg-parchment);
+      overflow: hidden;
+    }
+
+    .typo-word-group {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .hero-typographic-word {
+      font-family: var(--font-sans);
+      font-weight: var(--weight-black);
+      font-size: var(--text-3xl);
+      text-transform: lowercase;
+      color: var(--color-bg-deep);
+    }
+
+    .hero-typographic-blur-teal {
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-black);
+      filter: blur(6px);
+      opacity: 0.6;
+      mix-blend-mode: multiply;
+      color: var(--color-accent-cyan);
+    }
+
+    .hero-typographic-sub {
+      font-family: var(--font-condensed);
+      font-size: var(--text-sm);
+      letter-spacing: var(--tracking-wide);
+      text-transform: lowercase;
+      color: var(--color-text-ghost);
+    }
+
+    /* --- Paper Texture --- */
+    .paper-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='0.05'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 400px 400px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .paper-bg > * { position: relative; z-index: 1; }
+
+    /* --- Footer --- */
+    .footer {
+      padding: var(--space-10) clamp(1.5rem, 4vw, 4rem);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      background: var(--color-bg-deep);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-8);
+      margin-bottom: var(--space-8);
+    }
+
+    .footer-section { display: flex; flex-direction: column; gap: var(--space-3); }
+
+    .footer-label {
+      font-family: var(--font-condensed);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-text-ghost);
+      margin-bottom: var(--space-2);
+    }
+
+    .footer-content {
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: var(--leading-normal);
+    }
+
+    .footer-meta {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-ghost);
+      text-align: right;
+      padding-top: var(--space-6);
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+    }
+
+    /* --- Scroll Reveal CSS --- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(2rem);
+      filter: blur(4px);
+      transition: opacity 3s var(--ease-out-expo), transform 3s var(--ease-out-expo), filter 3s var(--ease-out-expo);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    /* --- Reduced Motion --- */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      body::before { animation: none; }
+      .reveal { opacity: 1; transform: none; filter: none; }
+      .scroll-indicator { animation: none; }
+    }
+
+    /* --- Responsive Global --- */
+    @media (max-width: 640px) {
+      :root {
+        --text-3xl: clamp(2rem, 8vw, 3.5rem);
+        --text-2xl: clamp(1.5rem, 6vw, 2.5rem);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- SVG Filters -->
+  <svg class="svg-filters" aria-hidden="true">
+    <defs>
+      <filter id="chromatic-aberration">
+        <feOffset in="SourceGraphic" dx="2" dy="0" result="cyan-offset" />
+        <feColorMatrix in="cyan-offset" type="matrix" values="0 0 0 0 0.376  0 0 0 0 0.816  0 0 0 0 0.816  0 0 0 0.3 0" />
+        <feOffset in="SourceGraphic" dx="-2" dy="0" result="magenta-offset" />
+        <feColorMatrix in="magenta-offset" type="matrix" values="0.816 0 0 0 0  0 0 0 0 0  0.58 0 0 0 0.753  0 0 0 0.3 0" />
+        <feBlend mode="screen" in="cyan-offset" in2="magenta-offset" result="glitch" />
+        <feBlend mode="normal" in="SourceGraphic" in2="glitch" />
+      </filter>
+      <filter id="noise-filter">
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch" />
+        <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.15 0" />
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <span class="nav-brand">NOISE WEB</span>
+    <ul class="nav-links" role="menubar">
+      <li role="none"><a href="#exhibition" class="nav-link" role="menuitem">WORK</a></li>
+      <li role="none"><a href="#philosophy" class="nav-link" role="menuitem">ABOUT</a></li>
+      <li role="none"><a href="#footer" class="nav-link" role="menuitem">CONTACT</a></li>
+    </ul>
+    <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ========== HERO — PATTERN A: COLLAGE ========== -->
+  <header class="hero-collage" role="banner">
+    <div class="hero-collage-bg">
+      <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1920&q=80" alt="Abstract digital jellyfish texture" />
+      <div class="scanlines scanlines-blue" aria-hidden="true"></div>
+      <div class="chromatic-overlay" aria-hidden="true"></div>
+    </div>
+
+    <div class="hero-collage-content hero-collage-content-left">
+      <div class="hero-badge">
+        <span class="label label-accent">EXHIBITION 01</span>
+        <span class="label" style="color: var(--color-text-ghost);">NOW SHOWING</span>
+      </div>
+
+      <h1 class="hero-heading" style="text-shadow: -2px 0 rgba(96,208,208,0.3), 2px 0 rgba(208,96,192,0.3);">
+        DIGITAL RUINS
+      </h1>
+
+      <p class="poetic-text" style="margin-top: var(--space-6); margin-bottom: var(--space-8); max-width: 35ch;">
+        A world where memory and technology decay together. Not loud cyberpunk, but quiet melancholy. Every pixel carries history.
+      </p>
+
+      <a href="#exhibition" class="button button-primary">
+        <span>ENTER EXHIBITION</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+      </a>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-line"></div>
+      <span class="scroll-text">SCROLL</span>
+    </div>
+  </header>
+
+  <!-- ========== QUICK NAV ========== -->
+  <section class="section" style="background: var(--color-bg-deep);" aria-labelledby="patterns-title">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <div class="section-divider section-divider-center">
+        <span class="section-divider-line" aria-hidden="true"></span>
+        <span class="section-divider-label">COMPOSITIONAL PATTERNS</span>
+        <span class="section-divider-line" aria-hidden="true"></span>
+      </div>
+
+      <div class="pattern-nav" role="list" aria-label="Pattern navigation">
+        <div class="pattern-nav-item reveal" role="listitem">
+          <span class="pattern-nav-number">A</span>
+          <div>
+            <h3 class="pattern-nav-title">COLLAGE</h3>
+            <p class="pattern-nav-desc">Full-screen asymmetric split with layered text and imagery</p>
+          </div>
+        </div>
+        <div class="pattern-nav-item reveal" role="listitem">
+          <span class="pattern-nav-number">B</span>
+          <div>
+            <h3 class="pattern-nav-title">DIAGONAL SPLIT</h3>
+            <p class="pattern-nav-desc">Dramatic diagonal division creating dark/light zone tension</p>
+          </div>
+        </div>
+        <div class="pattern-nav-item reveal" role="listitem">
+          <span class="pattern-nav-number">C</span>
+          <div>
+            <h3 class="pattern-nav-title">SPLIT SCREEN</h3>
+            <p class="pattern-nav-desc">Code panel with scanlines alongside visual output</p>
+          </div>
+        </div>
+        <div class="pattern-nav-item reveal" role="listitem">
+          <span class="pattern-nav-number">D</span>
+          <div>
+            <h3 class="pattern-nav-title">TYPOGRAPHIC</h3>
+            <p class="pattern-nav-desc">Type-as-art with paper texture and kinetic blur shapes</p>
+          </div>
+        </div>
+        <div class="pattern-nav-item reveal" role="listitem">
+          <span class="pattern-nav-number">E</span>
+          <div>
+            <h3 class="pattern-nav-title">VERTICAL STACK</h3>
+            <p class="pattern-nav-desc">Rhythmic repeating visual elements in meditative column</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PHILOSOPHY ========== -->
+  <section id="philosophy" class="section" aria-labelledby="philosophy-title">
+    <div class="section-divider section-divider-left">
+      <span class="section-divider-line" aria-hidden="true"></span>
+      <span class="section-divider-label">PHILOSOPHY</span>
+    </div>
+
+    <div class="container">
+      <div class="grid-60-40" style="align-items: center;">
+        <div class="reveal">
+          <h2 id="philosophy-title" class="section-heading">DIGITAL RUINS</h2>
+          <p class="poetic-text" style="margin-top: var(--space-6);">
+            The website lives in the <em>tension between organic and digital</em>. Never fully organic, never fully digital — always in the space between.
+          </p>
+          <p class="body-text" style="margin-top: var(--space-4);">
+            Texture is the primary visual language. Where other designs use color variation, this system uses grain, noise, scanlines, halftones, chromatic aberration, and paper texture. The palette is intentionally narrow — visual richness comes from texture variation, not chromatic variety.
+          </p>
+        </div>
+
+        <div class="card card-text-only reveal" style="height: 100%;">
+          <div class="card-content">
+            <span class="card-badge">CORE PRINCIPLES</span>
+            <h3 class="card-title">SIX AXIOMS</h3>
+            <ol style="list-style: none; display: grid; gap: var(--space-4); margin-top: var(--space-4);">
+              <li style="display: flex; gap: var(--space-3); align-items: flex-start;">
+                <span style="color: var(--color-accent-cyan); font-family: var(--font-mono); font-size: var(--text-xs); flex-shrink: 0;">01</span>
+                <span class="card-body"><strong>Texture Before Color</strong> — Visual richness from grain, noise, scanlines, halftones.</span>
+              </li>
+              <li style="display: flex; gap: var(--space-3); align-items: flex-start;">
+                <span style="color: var(--color-accent-cyan); font-family: var(--font-mono); font-size: var(--text-xs); flex-shrink: 0;">02</span>
+                <span class="card-body"><strong>Imperfection as Identity</strong> — Glitches, pixelation, distortion are the visual signature.</span>
+              </li>
+              <li style="display: flex; gap: var(--space-3); align-items: flex-start;">
+                <span style="color: var(--color-accent-cyan); font-family: var(--font-mono); font-size: var(--text-xs); flex-shrink: 0;">03</span>
+                <span class="card-body"><strong>Asymmetry as Order</strong> — 60/40 split, diagonal division, off-balance composition.</span>
+              </li>
+              <li style="display: flex; gap: var(--space-3); align-items: flex-start;">
+                <span style="color: var(--color-accent-cyan); font-family: var(--font-mono); font-size: var(--text-xs); flex-shrink: 0;">04</span>
+                <span class="card-body"><strong>Typography as Material</strong> — Text is texture, shape, pattern, atmosphere.</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TEXTURE DEMO ========== -->
+  <section class="section" style="background: var(--color-bg-deep);" aria-labelledby="textures-title">
+    <div class="section-divider section-divider-right">
+      <span class="section-divider-label">TEXTURE LAYERS</span>
+      <span class="section-divider-line" aria-hidden="true"></span>
+    </div>
+
+    <div class="container">
+      <h2 id="textures-title" class="section-heading reveal">THE SOUL OF THE DESIGN</h2>
+
+      <div class="texture-grid" style="margin-top: var(--space-8);">
+        <div class="texture-demo reveal">
+          <div class="texture-demo-bg" style="background: var(--color-bg-deep);">
+            <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E');background-repeat:repeat;background-size:256px 256px;opacity:0.15;mix-blend-mode:overlay;"></div>
+          </div>
+          <div class="texture-demo-info">
+            <span class="card-badge">LAYER 1 · MANDATORY</span>
+            <h3 class="card-title" style="font-size: var(--text-lg);">FILM GRAIN</h3>
+            <p class="card-body" style="margin-top: var(--space-1);">Fractal noise, 0.65 baseFrequency, 4 octaves. Opacity 3-18% by context. Breathing animation 8s cycle.</p>
+          </div>
+        </div>
+
+        <div class="texture-demo reveal">
+          <div class="texture-demo-bg" style="background: var(--color-bg-mid);">
+            <div style="position:absolute;inset:0;background:repeating-linear-gradient(to bottom,transparent 0px,rgba(0,0,0,0.06) 1px,transparent 2px);background-size:100% 3px;opacity:0.5;"></div>
+          </div>
+          <div class="texture-demo-info">
+            <span class="card-badge">LAYER 3 · OPTIONAL</span>
+            <h3 class="card-title" style="font-size: var(--text-lg);">CRT SCANLINES</h3>
+            <p class="card-body" style="margin-top: var(--space-1);">Repeating linear gradient, 3px repeat. Subtle (4%), heavy (10%), or cyan-tinted variants. CRT monitor phosphor feel.</p>
+          </div>
+        </div>
+
+        <div class="texture-demo reveal">
+          <div class="texture-demo-bg" style="background: var(--color-bg-deep);">
+            <div style="position:absolute;inset:0;background:rgba(96,208,208,0.03);transform:translateX(-2px);mix-blend-mode:screen;"></div>
+            <div style="position:absolute;inset:0;background:rgba(208,96,192,0.03);transform:translateX(2px);mix-blend-mode:screen;"></div>
+          </div>
+          <div class="texture-demo-info">
+            <span class="card-badge">LAYER 4 · SIGNATURE</span>
+            <h3 class="card-title" style="font-size: var(--text-lg);">CHROMATIC ABERRATION</h3>
+            <p class="card-body" style="margin-top: var(--space-1);">RGB channel separation (±2px). Cyan/magenta channels. Core visual texture, not hover gimmick. 4s oscillation cycle.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TYPOGRAPHY SHOWCASE ========== -->
+  <section class="section" aria-labelledby="typo-title">
+    <div class="section-divider section-divider-center">
+      <span class="section-divider-line" aria-hidden="true"></span>
+      <span class="section-divider-label">TYPOGRAPHY SYSTEM</span>
+      <span class="section-divider-line" aria-hidden="true"></span>
+    </div>
+
+    <div class="container">
+      <h2 id="typo-title" class="section-heading reveal">THREE FAMILIES IN TENSION</h2>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--gap-lg); margin-top: var(--space-10);">
+        <div class="card card-text-only reveal">
+          <div class="card-content">
+            <span class="card-badge">DISPLAY</span>
+            <h3 class="card-title" style="font-family: var(--font-serif);">CRIMSON TEXT</h3>
+            <p class="card-body" style="margin-bottom: var(--space-4);">Traditional serif. Warmth, history, decay. For large headers, poetic text. Broken serif treatment via texture overlays.</p>
+            <div class="type-specimen">
+              <p style="font-family: var(--font-serif); font-size: var(--text-xl); font-weight: 700; color: var(--color-text-primary); margin-bottom: var(--space-2);">DIGITAL RUINS</p>
+              <p style="font-family: var(--font-serif); font-size: var(--text-base); font-weight: 300; color: var(--color-text-secondary); line-height: var(--leading-relaxed);">memory and technology decay together</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-text-only reveal">
+          <div class="card-content">
+            <span class="card-badge">UI AND BODY</span>
+            <h3 class="card-title" style="font-family: var(--font-sans);">INTER</h3>
+            <p class="card-body" style="margin-bottom: var(--space-4);">Geometric sans-serif. Clean, modern, functional. Weights 300-800. Inter Tight for labels.</p>
+            <div class="type-specimen">
+              <p style="font-family: var(--font-sans); font-size: var(--text-base); font-weight: 400; color: var(--color-text-secondary); line-height: var(--leading-normal); margin-bottom: var(--space-2);">Body text at 14-16px with 1.4 line height.</p>
+              <p style="font-family: var(--font-condensed); font-size: var(--text-xs); font-weight: 600; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--color-accent-cyan);">UI LABEL / BUTTON TEXT</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-text-only reveal">
+          <div class="card-content">
+            <span class="card-badge">CODE AND DATA</span>
+            <h3 class="card-title" style="font-family: var(--font-mono);">JETBRAINS MONO</h3>
+            <p class="card-body" style="margin-bottom: var(--space-4);">Monospace. Machine voice, data authenticity. Code blocks, data streams, technical metadata.</p>
+            <div class="type-specimen">
+              <pre style="font-family: var(--font-mono); font-size: var(--text-xs); line-height: var(--leading-mono); color: var(--color-text-muted); overflow-x: auto;">function noise(x, y, t) {
+  return perlin.noise3D(x*0.01, y*0.01, t*0.1);
+}</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fragmented Text Demo -->
+      <div class="card card-text-only" style="margin-top: var(--space-10); max-width: 800px;" data-reveal>
+        <div class="card-content">
+          <span class="card-badge">SIGNATURE TECHNIQUE</span>
+          <h3 class="card-title">FRAGMENTED TEXT TREATMENT</h3>
+          <p class="card-body" style="margin-bottom: var(--space-6);">Derived from Images 11, 12, 13. Text that appears broken, misaligned, or partially obscured by textures.</p>
+
+          <div style="display: grid; gap: var(--space-6);">
+            <div>
+              <p class="card-badge" style="margin-bottom: var(--space-2);">1. BROKEN SERIF</p>
+              <p class="fragment-serif" style="font-size: var(--text-2xl); color: var(--color-text-primary);">DIGITAL RUINS</p>
+            </div>
+            <div>
+              <p class="card-badge" style="margin-bottom: var(--space-2);">2. SLIDING OFFSET</p>
+              <p class="fragment-slide" style="font-family: var(--font-serif); font-weight: 700; font-size: var(--text-2xl); color: var(--color-text-primary);">
+                <span>A</span><span>N</span><span>A</span><span>L</span><span>O</span><span>G</span>
+              </p>
+            </div>
+            <div>
+              <p class="card-badge" style="margin-bottom: var(--space-2);">3. TEXT AS LIQUID</p>
+              <p class="fragment-blur" style="font-family: var(--font-sans); font-weight: 700; font-size: var(--text-2xl); color: var(--color-accent-cyan);">MEMORY DECAY</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DIAGONAL HERO (PATTERN B) ========== -->
+  <section id="exhibition" class="hero-diagonal" aria-labelledby="diagonal-title">
+    <div class="hero-diagonal-content">
+      <div class="hero-diagonal-dark">
+        <h2 id="diagonal-title" class="section-heading">ASYMMETRY AS ORDER</h2>
+        <p class="poetic-text" style="margin-top: var(--space-6); max-width: 40ch;">
+          Never center-align. Never use symmetric grids. The 60/40 split, the diagonal division, the off-balance composition — these create the editorial, collage-like feel.
+        </p>
+        <a href="#" class="button button-glitch" style="margin-top: var(--space-8);">EXPLORE PATTERN</a>
+      </div>
+      <div class="hero-diagonal-light">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1920&q=80" alt="Abstract digital noise texture" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TYPOGRAPHIC HERO (PATTERN D) ========== -->
+  <section class="hero-typographic" aria-labelledby="typo-hero-title">
+    <div style="text-align: center;" id="typo-hero-title">
+      <div class="typo-word-group">
+        <span class="hero-typographic-word">NOISE</span>
+        <span class="hero-typographic-blur-teal">NOISE</span>
+      </div>
+      <div class="typo-word-group" style="margin-top: var(--space-2);">
+        <span class="hero-typographic-word">WEB</span>
+        <span class="hero-typographic-blur-teal">WEB</span>
+      </div>
+      <p class="hero-typographic-sub" style="margin-top: var(--space-6);">digital ruins / analog memory</p>
+      <p class="hero-typographic-sub">NO 001 - 2024</p>
+      <div style="margin-top: var(--space-10);">
+        <a href="#" class="button button-glitch">VIEW MANIFESTO</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="section" style="text-align: center; background: var(--color-bg-parchment); position: relative;">
+    <div class="container" style="max-width: 700px;">
+      <h2 class="section-heading reveal">EXPLORE THE EXHIBITION</h2>
+      <p class="poetic-text reveal" style="margin: var(--space-6) auto var(--space-10); text-align: center;">
+        Five compositional patterns. Fourteen reference images. One cohesive visual language.
+      </p>
+      <div class="reveal" style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+        <a href="#" class="button button-primary">VIEW EXHIBITION</a>
+        <a href="#" class="button button-glitch">GENERATIVE LAB</a>
+      </div>
+      <p class="reveal" style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-ghost); margin-top: var(--space-10);">NO 001 — NOISE WEB V2 — JULY 2026</p>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer id="footer" class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <p class="footer-label">WORK</p>
+        <a href="#" class="footer-content">Explore Exhibition</a>
+      </div>
+      <div class="footer-section">
+        <p class="footer-label">ABOUT</p>
+        <a href="#" class="footer-content">Design Philosophy</a>
+      </div>
+      <div class="footer-section">
+        <p class="footer-label">CONTACT</p>
+        <a href="mailto:hello@noiseweb.example" class="footer-content">hello@noiseweb.example</a>
+      </div>
+      <div class="footer-section">
+        <p class="footer-label">LEGAL</p>
+        <a href="#" class="footer-content">Imprint</a>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <span>NOISE WEB — DIGITAL RUINS ARCHIVE</span>
+      <span>BUILD v1.0.0-noise</span>
+    </div>
+  </footer>
+
+  <!-- Scroll Reveal Script -->
+  <script>
+    (function() {
+      'use strict';
+      var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) {
+        document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('visible'); });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            setTimeout(function() { entry.target.classList.add('visible'); }, 50);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+    })();
+  </script>
+</body>
+</html>
