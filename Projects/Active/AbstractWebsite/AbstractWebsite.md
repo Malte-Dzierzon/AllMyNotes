@@ -1,12 +1,17 @@
 ---
-title: "Noise Web"
+title: AbstractWebsite
 type: project
 status: idea
-engine: web  # HTML/CSS/JS, React, WebGL, Three.js, …
+engine: web
 started: 2026-07-18
-progress: 5%        # Konzeption & Design-Idee
-github:            # optional: https://github.com/Malte-Dzierzon/noise-web
-tags: [web, design, editorial, retro-futuristic, art]
+progress: 5%
+github:
+tags:
+  - web
+  - design
+  - editorial
+  - retro-futuristic
+  - art
 ---
 
 # Noise Web – Retro-Futuristisches Editorial-Interface
