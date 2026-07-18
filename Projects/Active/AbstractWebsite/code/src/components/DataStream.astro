@@ -1,0 +1,73 @@
+---
+// Data Stream Block — Code/data display with CRT scanline overlay
+
+interface DataStreamProps {
+  content: string;
+  title?: string;
+  language?: string;
+}
+
+const { content, title = 'DATA_STREAM', language = 'text' } = Astro.props;
+---
+
+<div class="data-stream" role="region" aria-label={title} tabindex="0">
+  {title && (
+    <div class="data-stream-header">
+      <span class="label label-accent">{title}</span>
+      <span class="label" style="color: var(--color-text-ghost); margin-left: var(--space-3);">{language}</span>
+    </div>
+  )}
+  <pre><code>{content}</code></pre>
+</div>
+
+<style>
+  .data-stream {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    line-height: var(--leading-mono);
+    color: var(--color-text-muted);
+    white-space: pre-wrap;
+    overflow-x: auto;
+    max-height: 400px;
+    overflow-y: auto;
+    position: relative;
+    padding: var(--space-4);
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .data-stream-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--space-3);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .data-stream code {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  .data-stream::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      rgba(0, 0, 0, 0.06) 1px,
+      transparent 2px
+    );
+    background-size: 100% 3px;
+    pointer-events: none;
+  }
+
+  /* Syntax highlighting (basic) */
+  .data-stream .keyword { color: var(--color-accent-cyan-dim); }
+  .data-stream .string { color: var(--color-accent-glitch-magenta); }
+  .data-stream .comment { color: rgba(138, 169, 196, 0.5); }
+  .data-stream .function { color: var(--color-accent-blue); }
+  .data-stream .number { color: var(--color-accent-cyan); }
+</style>

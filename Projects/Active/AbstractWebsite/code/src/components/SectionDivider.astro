@@ -1,0 +1,74 @@
+---
+// Section Divider — Atmospheric transition without aggressive visual break
+
+interface SectionDividerProps {
+  label?: string;
+  position?: 'left' | 'center' | 'right';
+}
+
+const { label = 'SECTION', position = 'left' } = Astro.props;
+const alignClass = { left: 'flex-start', center: 'center', right: 'flex-end' }[position];
+---
+
+<div class="section-divider justify-{alignClass}" role="separator" aria-label={label}>
+  <div class="section-divider-line" aria-hidden="true" />
+  <span class="section-divider-label">{label}</span>
+</div>
+
+<style>
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-8) 0;
+    justify-content: var(--justify, flex-start);
+  }
+
+  .section-divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 100%
+    );
+    max-width: 400px;
+  }
+
+  .section-divider-label {
+    font-family: var(--font-condensed);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--color-text-ghost);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Center variant: line on both sides */
+  .section-divider.justify-center {
+    justify-content: center;
+  }
+
+  .section-divider.justify-center .section-divider-line {
+    max-width: 200px;
+  }
+
+  .section-divider.justify-center .section-divider-label {
+    order: 1;
+  }
+
+  .section-divider.justify-center .section-divider-line:first-child {
+    order: 0;
+  }
+
+  .section-divider.justify-center .section-divider-line:last-child {
+    order: 2;
+  }
+
+  /* Right variant */
+  .section-divider.justify-flex-end {
+    flex-direction: row-reverse;
+  }
+</style>
