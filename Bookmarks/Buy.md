@@ -5,5 +5,6 @@
 
 
 Klamotten:
-- [ ] https://www.vervier.store/products/selvedge-denim
+- [ ] [Selvedge Denim
+ &ndash; Vervier Studios](https://www.vervier.store/products/selvedge-denim)
 - [ ] 
