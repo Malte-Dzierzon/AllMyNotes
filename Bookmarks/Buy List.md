@@ -22,7 +22,3 @@
 
 ---
 
-### Quick Add Template
-```
-- [ ] [Name](URL)
-```
