@@ -1,8 +1,8 @@
 ---
-description: "Design Concept — Noise / Editorial / Retro-Futuristic Web"
-purpose: "Design system definition for a reduced, textured, cinematic digital experience"
+description: "Portfolio Design Concept — Noise / Editorial / Retro-Futuristic Web"
+purpose: "Interactive retro-poster portfolio website with Three.js post-processing effects"
 status: "clean"
-source: "DESIGN.md + auto-generated brand toolkit"
+source: "DESIGN.md + brand toolkit"
 ---
 
 # web-design-concept
@@ -11,7 +11,7 @@ source: "DESIGN.md + auto-generated brand toolkit"
 
 ## Overview
 
-Dieses Verzeichnis enthält das Design-Konzept für eine Website, die bewusst von modernem Minimalismus abweicht. Atmosphäre und Emotion stehen vor Perfektion. Der Look kombiniert experimentelles Grafikdesign, digitale Magazine, Vintage-CRT-Monitore und eine ruhige, melancholische Zukunftsvision.
+Interactive Portfolio-Webseite im Retro-Poster-Stil. Kombiniert editoriales Grafikdesign mit Three.js Post-Processing-Effekten (Film Grain, Scanlines, Bloom, Chromatic Aberration, Dithering). Läuft ohne Build-Tools — Three.js wird via CDN-Importmap geladen.
 
 ## Files
 
@@ -24,12 +24,14 @@ Dieses Verzeichnis enthält das Design-Konzept für eine Website, die bewusst vo
 
 ## Design Direction
 
+- **Site Type:** Interactive Portfolio — retro graphic design poster aesthetic
+- **Tech:** Three.js (via CDN importmap) + postprocessing npm package — no build tools
+- **Effekte:** Film Grain, CRT Scanlines, Vignette, Chromatic Aberration, Bloom, Dithering, Light Leaks
 - **Palette:** Cold White (`#ffffff`), Black (`#111111`), Blue-Tinted Gray (`#f7f8fa`), Cold Neon Blue (`#1677ff`), Desaturated Cyan (`#5bb8c4`)
 - **Typography:** Elms Sans (Display) / Inter (Body) / IBM Plex Mono (Code)
 - **Style:** Film grain, CRT scanlines, dithering, bloom, light leaks — textures over colors
 - **Layout:** Editorial, free-form, asymmetrisch, poster-artig, `border-radius: 0`
 - **Motion:** Langsam, atmosphärisch, cinematic — keine schnellen Animationen
-- **Vibe:** Ruhig, melancholisch, futuristisch, experimentell — kein Neon-Cyberpunk
 
 ## Cleanup History
 
