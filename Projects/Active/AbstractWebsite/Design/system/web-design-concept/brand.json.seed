@@ -1,0 +1,13 @@
+{
+  "controlHeight": 44,
+  "controlHeightLG": 52,
+  "controlHeightSM": 32,
+  "fontFamily": "Inter, system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
+  "fontFamilyCode": "'IBM Plex Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace",
+  "fontSize": 14,
+  "borderRadius": 0,
+  "lineWidth": 1,
+  "wireframe": true,
+  "motionUnit": 0.3,
+  "motionBase": 0
+}

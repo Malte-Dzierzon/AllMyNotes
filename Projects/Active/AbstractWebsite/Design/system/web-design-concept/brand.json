@@ -1,0 +1,243 @@
+{
+  "name": "# Design Concept –",
+  "tagline": "Noise / Editorial / Retro-Futuristic Web — a reduced, textured, cinematic digital experience",
+  "description": "A design system for a digital art exhibition, an experimental album cover, and a futuristic magazine combined. Calm, atmospheric, mysterious, and emotionally engaging. Intentionally moves away from modern minimalist interfaces — prioritizes atmosphere and emotion over perfection. Feels like experimental graphic design, digital magazines, vintage CRT monitors, and a calm, melancholic vision of the future.",
+  "sourceUrl": "designmd://design-concept",
+  "seed": {
+    "colorPrimary": "#1677ff",
+    "colorLink": "#5bb8c4",
+    "colorTextBase": "#111111",
+    "colorBgBase": "#ffffff",
+    "fontFamily": "Inter, system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
+    "fontFamilyCode": "'IBM Plex Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace",
+    "borderRadius": 0,
+    "controlHeight": 44,
+    "lineWidth": 1,
+    "motionUnit": 0.3,
+    "motionBase": 0,
+    "wireframe": true
+  },
+  "logo": {
+    "primary": "logos/Dropped-Image-3-.png",
+    "alternates": [],
+    "notes": "No logo supplied in pasted DESIGN.md. System uses typographic wordmark in Elms Sans or Inter instead."
+  },
+  "colors": [
+    {
+      "role": "background",
+      "hex": "#ffffff",
+      "oklch": "oklch(100% 0 0)",
+      "name": "Cold White",
+      "usage": "Page canvas — the cold white backdrop for editorial layouts"
+    },
+    {
+      "role": "surface",
+      "hex": "#f7f8fa",
+      "oklch": "oklch(97.5% 0.004 260)",
+      "name": "Blue-Tinted Gray",
+      "usage": "Cards, panels, and secondary containers"
+    },
+    {
+      "role": "foreground",
+      "hex": "#111111",
+      "oklch": "oklch(8% 0.005 260)",
+      "name": "Black",
+      "usage": "Body text, headings, and primary content"
+    },
+    {
+      "role": "muted",
+      "hex": "#6b7280",
+      "oklch": "oklch(52% 0.025 260)",
+      "name": "Muted",
+      "usage": "Secondary text, metadata, technical labels, timestamps"
+    },
+    {
+      "role": "border",
+      "hex": "#d9dee7",
+      "oklch": "oklch(85% 0.01 260)",
+      "name": "Border",
+      "usage": "Rules, dividers, thin strokes"
+    },
+    {
+      "role": "accent",
+      "hex": "#1677ff",
+      "oklch": "oklch(55% 0.18 260)",
+      "name": "Cold Neon Blue",
+      "usage": "Primary actions, links, emphasis — use once or twice per view, never as large wash"
+    },
+    {
+      "role": "accent-secondary",
+      "hex": "#5bb8c4",
+      "oklch": "oklch(72% 0.07 200)",
+      "name": "Desaturated Cyan",
+      "usage": "Secondary accent, subtle decorative elements, accent-text on dark backgrounds"
+    }
+  ],
+  "typography": {
+    "display": {
+      "family": "Elms Sans",
+      "fallbacks": [
+        "Inter",
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ],
+      "weights": [
+        300,
+        400,
+        500,
+        700
+      ]
+    },
+    "body": {
+      "family": "Inter",
+      "fallbacks": [
+        "system-ui",
+        "-apple-system",
+        "Segoe UI",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ],
+      "weights": [
+        400,
+        600,
+        700
+      ]
+    },
+    "mono": {
+      "family": "IBM Plex Mono",
+      "fallbacks": [
+        "SFMono-Regular",
+        "Consolas",
+        "Liberation Mono",
+        "Menlo",
+        "Courier",
+        "monospace"
+      ],
+      "weights": [
+        100,
+        200,
+        300,
+        400,
+        500,
+        600,
+        700
+      ]
+    }
+  },
+  "voice": {
+    "adjectives": [
+      "calm",
+      "melancholic",
+      "futuristic",
+      "experimental",
+      "editorial",
+      "surreal",
+      "atmospheric",
+      "cinematic",
+      "reduced",
+      "textured",
+      "cold",
+      "refined"
+    ],
+    "tone": "Editorial, atmospheric, and emotionally engaging. Reads like a digital art exhibition or experimental magazine — calm but not sleepy, melancholic but not depressing, futuristic but not loud. Avoid playful, overly friendly, or corporate marketing tone. Text is part of the visual composition, not just information delivery.",
+    "messagingPillars": [
+      "Textured digital atmosphere: driven by grain, scanlines, bloom, and analog artifacts rather than flat minimalism",
+      "Cold cinematic palette: restrained navy, cool white, desaturated cyan, and subtle silver glow — never bright neon or warm beige",
+      "Editorial typography: large expressive headlines, asymmetric compositions, generous whitespace, Japanese glyphs as visual texture",
+      "Magazine-inspired layout: free-form composition, layered blocks at different scales, poster-like spreads",
+      "Slow atmospheric motion: floating textures, CRT flicker, gentle parallax — never fast or playful"
+    ],
+    "vocabulary": {
+      "use": [
+        "atmosphere",
+        "texture",
+        "signal",
+        "glow",
+        "static",
+        "drift",
+        "echo",
+        "noise",
+        "transmission",
+        "decay",
+        "horizon",
+        "void",
+        "fade",
+        "pulse"
+      ],
+      "avoid": [
+        "innovative",
+        "disruptive",
+        "revolutionary",
+        "game-changing",
+        "cutting-edge",
+        "seamless",
+        "robust",
+        "scalable",
+        "user-friendly",
+        "next-gen"
+      ]
+    }
+  },
+  "imagery": {
+    "style": "Textures over colors. Grain, noise, scanlines, dithering, halftone patterns, light leaks, bloom, and compression artifacts as primary visual texture. Everything feels slightly imperfect, organic, and aged-digital.",
+    "subjects": [
+      "Vintage CRT screens and monitor glow",
+      "Abstract light and signal artifacts",
+      "Cold industrial and architectural spaces",
+      "Ambient digital landscapes",
+      "Textural abstract compositions"
+    ],
+    "treatment": "Apply film grain overlay, CRT scanline pattern, soft vignette, subtle bloom on light sources, and light leak gradients. Use JPEG/video compression artifacts as stylistic texture. Everything should feel like it was captured through imperfect analog-to-digital conversion.",
+    "avoid": [
+      "Clean product photography",
+      "Flat illustrations",
+      "Vector art",
+      "Stock corporate imagery",
+      "Bright saturated colors",
+      "Warm beige tones",
+      "Playful or cartoon imagery"
+    ],
+    "samples": [
+      {
+        "file": "imagery/Dropped-Image-3-.png",
+        "kind": "upload"
+      },
+      {
+        "file": "imagery/Dropped-Image-7-.png",
+        "kind": "upload"
+      },
+      {
+        "file": "imagery/Dropped-Image-9-.png",
+        "kind": "upload"
+      },
+      {
+        "file": "imagery/Dropped-Image-8-.png",
+        "kind": "upload"
+      }
+    ]
+  },
+  "layout": {
+    "radius": "0px",
+    "borderWeight": "1px",
+    "spacing": "8px baseline grid with generous whitespace; asymmetric margins; overlapping layers",
+    "postureRules": [
+      "Editorial layout: each section feels like its own cover page, poster, or editorial spread",
+      "Free-form composition: layered and overlapping elements. Never strictly rectangular grid sections",
+      "Asymmetric balance: generous whitespace on one side, dense content on the other. Avoid centering everything",
+      "Blocks at different scales: mix full-bleed hero blocks with small metadata panels and wide typographic spreads",
+      "Japanese typography as texture: use kana/kanji glyphs as decorative design elements in headings and overlays",
+      "Zero border-radius throughout: all UI elements are strictly rectangular with square corners (0px radius)",
+      "Text is design: typography is part of the visual composition, not just content delivery",
+      "Component kit should cover: Button, Card, Form, Navigation — all rectangular, minimal, with subtle glow interaction states",
+      "Pin overlays consistently: badges and labels over images sit fully inside bounds with solid-panel background and shadow",
+      "Charts use fills, not bare outlines: data visualization encodes through area/volume, not thin strokes",
+      "Slow, atmospheric motion: noise textures, CRT flicker, gentle parallax, fade transitions. Duration 0.3–1.2s. Ease: cubic-bezier(0.4, 0, 0.2, 1)",
+      "Texture overlays: film grain, scanlines, vignette, bloom — applied as CSS pseudo-elements or overlay layers"
+    ]
+  }
+}

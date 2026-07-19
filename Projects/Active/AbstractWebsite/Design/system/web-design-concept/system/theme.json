@@ -1,0 +1,25 @@
+{
+  "token": {
+    "colorPrimary": "#1677ff",
+    "colorSuccess": "#52c41a",
+    "colorWarning": "#faad14",
+    "colorError": "#ff4d4f",
+    "colorInfo": "#1677ff",
+    "colorTextBase": "#111111",
+    "colorBgBase": "#ffffff",
+    "fontFamily": "Inter, system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
+    "fontFamilyCode": "'IBM Plex Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace",
+    "fontSize": 14,
+    "borderRadius": 0,
+    "sizeUnit": 4,
+    "sizeStep": 4,
+    "controlHeight": 44,
+    "lineWidth": 1,
+    "motionUnit": 0.3,
+    "motionBase": 0,
+    "wireframe": true,
+    "motion": true,
+    "colorLink": "#5bb8c4"
+  },
+  "algorithm": "default"
+}
