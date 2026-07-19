@@ -2135,3 +2135,5 @@ Before considering the implementation complete, verify:
 *This is Design System V2. It supersedes V1 and is the single source of truth for the Noise Web / AbstractWebsite project.*
 
 *Last updated: July 2026 — Derived from 14 visual reference images and critical re-evaluation of V1 design decisions.*
+## 1-critical-re-evaluation
+## 1-critical-re-evaluation

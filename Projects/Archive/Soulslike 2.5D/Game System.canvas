@@ -3,7 +3,7 @@
 		{"id":"e22da4ff59771c9d","type":"group","x":-280,"y":720,"width":1640,"height":1120,"label":"Magic"},
 		{"id":"aabc436e57835251","type":"group","x":-2880,"y":-1280,"width":1120,"height":781,"label":"Plugins "},
 		{"id":"3be4832e9f2d5de5","type":"text","text":"- Man erkundet die Map \n- Man kämpft gegen Gegner \n- ","x":40,"y":-1680,"width":274,"height":221},
-		{"id":"abe7f66e2423340a","type":"file","file":"Wiki/Images/Pictures/Projekt Plugins.jpg","x":-2160,"y":-1200,"width":352,"height":656,"color":"5"},
+		{"id":"abe7f66e2423340a","type":"file","file":"Wiki/Images/Pictures/Projekt Plugins.webp","x":-2160,"y":-1200,"width":352,"height":656,"color":"5"},
 		{"id":"95ced5e36c0b9f05","type":"text","text":"**Melee Trace**","x":-2773,"y":-1140,"width":143,"height":60},
 		{"id":"37ff981be39c9138","type":"text","text":"**Ninja G.A.S / Input** ","x":-2411,"y":-1140,"width":176,"height":60},
 		{"id":"179e4a1ad99b6d7e","type":"text","text":"Plugins:\n","x":-2566,"y":-905,"width":125,"height":50},
@@ -25,14 +25,14 @@
 		{"id":"e4f46e0338124c79","type":"text","text":"Jederzeit einsetzbar, als Meditation, außer wenn man im Combat ist","x":559,"y":966,"width":260,"height":80},
 		{"id":"5a1e516a6afcf4ea","type":"text","text":"**Chestory Inventory**","x":-2414,"y":-655,"width":182,"height":50},
 		{"id":"6ed63964e72a576f","type":"text","text":"# Himmelsbrücke","x":-2456,"y":240,"width":250,"height":60,"color":"1"},
-		{"id":"5ba4e9cc7e97d9d2","type":"file","file":"Wiki/Images/Pictures/Gameplay.jpg","x":-3079,"y":364,"width":1496,"height":935},
+		{"id":"5ba4e9cc7e97d9d2","type":"file","file":"Wiki/Images/Pictures/Gameplay.webp","x":-3079,"y":364,"width":1496,"height":935},
 		{"id":"08010bc8d271e768","type":"text","text":"Sword","x":723,"y":-260,"width":103,"height":60},
 		{"id":"3d465153594b1928","type":"text","text":"Finisher","x":917,"y":-240,"width":123,"height":50},
 		{"id":"50e1797252a0d831","type":"text","text":"Weapon","x":605,"y":-100,"width":118,"height":60,"color":"#ffe32b"},
 		{"id":"aacc54e279d2d0cb","type":"text","text":"Man hat eine Art Flamme oder Symbole über den Kopf schwebende, die die Art der Magie anzeigt ","x":448,"y":1251,"width":261,"height":137},
-		{"id":"884e876382f6f023","type":"file","file":"Wiki/Images/Pictures/BP 3er Combo.jpg","x":1200,"y":-494,"width":563,"height":180},
+		{"id":"884e876382f6f023","type":"file","file":"Wiki/Images/Pictures/BP 3er Combo.webp","x":1200,"y":-494,"width":563,"height":180},
 		{"id":"a73bf182fbc656d8","type":"text","text":"3er Combo","x":917,"y":-340,"width":123,"height":51},
-		{"id":"a15101a17260b594","type":"file","file":"Wiki/Images/Pictures/BP Combat.jpg","x":1200,"y":-247,"width":563,"height":367}
+		{"id":"a15101a17260b594","type":"file","file":"Wiki/Images/Pictures/BP Combat.webp","x":1200,"y":-247,"width":563,"height":367}
 	],
 	"edges":[
 		{"id":"d7152ada3d700d1d","fromNode":"a654f683e07d56f8","fromSide":"right","toNode":"d9d538e267d4cb87","toSide":"left"},

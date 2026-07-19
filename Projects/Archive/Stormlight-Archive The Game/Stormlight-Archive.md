@@ -24,8 +24,8 @@ Worldbuilding- und Konzept-Canvas für ein Spiel, basierend auf Brandon Sanderso
 ## Referenzen
 - [[Wiki/Books/Book Collection/Der Weg der Könige - Brandon Sanderson.md]]
 - [[Wiki/Books/Book Collection/Winde und Wahrheit - Brandon Sanderson.md]]
-- [[Wiki/Images/Pictures/1024px-Shattered_Plains_WoR_map.jpeg]]
-- [[Wiki/Images/Pictures/The_Shattered_Plains_by_Nick_van_Kleef.jpg]]
+- [[1024px-Shattered_Plains_WoR_map.webp]]
+- [[The_Shattered_Plains_by_Nick_van_Kleef.webp]]
 
 ## Status
 🗂️ Referenz / Worldbuilding — kein aktives Projekt

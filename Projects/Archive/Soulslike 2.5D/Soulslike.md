@@ -27,5 +27,5 @@ Kurz: Ein **brutales, atmosphärisches 2,5D-Soulslike**, das Realismus, cineasti
 
 ## Notes
 - Game System Canvas: [[Game System.canvas]]
-- Referenzbilder: [[Wiki/Images/Pictures/BP Combat.jpg]], [[Wiki/Images/Pictures/Gameplay.jpg]]
+- Referenzbilder: [[BP Combat.webp]], [[Gameplay.webp]]
 - Dieses Projekt war Teil des Junior-Universitätsstudiums
